@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Un rand din prognoza. Se umfla din cod, cate unul pe zi - o lista de sase randuri
+     nu merita un RecyclerView si un adaptor. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingTop="11dp"
+    android:paddingBottom="11dp">
+
+    <TextView
+        android:id="@+id/r_name"
+        android:layout_width="72dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/ink"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:id="@+id/r_icon"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:src="@drawable/ic_cloudy"
+        android:contentDescription="@string/icon_cd" />
+
+    <TextView
+        android:id="@+id/r_rain"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/rain"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/r_min"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:textColor="@color/ink_3"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/r_max"
+        android:layout_width="42dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:textColor="@color/ink"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+</LinearLayout>

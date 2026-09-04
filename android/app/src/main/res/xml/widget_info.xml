@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Marimea: patru celule pe lat, trei pe inalt - cam cat widget-ul de vreme pe care il
+    inlocuieste, adica pana la o treime-jumatate de ecran. Se poate redimensiona in
+    ambele directii; sub `minResize` Android nu-l lasa, fiindca randul cu cinci zile
+    n-ar mai incapea.
+
+    `updatePeriodMillis` = 30 de minute e **minimul pe care Android il accepta** - orice
+    valoare mai mica e ridicata tacut la 1800000. Reimprospatarea manuala, la tap, nu
+    are limita asta.
+-->
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:initialLayout="@layout/widget"
+    android:minWidth="250dp"
+    android:minHeight="110dp"
+    android:targetCellWidth="4"
+    android:targetCellHeight="3"
+    android:minResizeWidth="180dp"
+    android:minResizeHeight="80dp"
+    android:maxResizeWidth="450dp"
+    android:maxResizeHeight="220dp"
+    android:resizeMode="horizontal|vertical"
+    android:updatePeriodMillis="1800000"
+    android:widgetCategory="home_screen"
+    android:description="@string/widget_description" />

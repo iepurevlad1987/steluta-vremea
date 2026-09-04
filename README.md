@@ -33,6 +33,21 @@ sw.js           pornire fără internet
 icons/          192, 512 și una „maskable" pentru Android
 ```
 
+## Două implementări, în același loc
+
+| Unde | Ce e | Ce poate în plus |
+|---|---|---|
+| rădăcina | **PWA** — HTML + CSS + JS | se instalează din Chrome, merge pe orice telefon, fără build |
+| [`android/`](android/) | **aplicație Android nativă**, Kotlin | **widget pe ecranul de start**, plus locație salvată |
+| [`wallpapers/`](wallpapers/) | patru fundaluri 1440×3120 | aceeași paletă, același sunburst |
+
+**De ce există și varianta nativă.** PWA-ul face tot ce face cea nativă, în afară de un
+singur lucru: **nu poate pune un widget pe ecranul de start.** Widget-urile Android cer un
+`AppWidgetProvider`, adică cod nativ. Nu e o limitare a implementării, e a platformei —
+nicio aplicație web nu poate.
+
+Detaliile aplicației native, inclusiv cum se compilează, sunt în [`android/README.md`](android/README.md).
+
 ## Cum o rulezi
 
 **Nu deschide `index.html` direct cu dublu-clic.** Din `file://`, service worker-ul nu

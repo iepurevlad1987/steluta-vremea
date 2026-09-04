@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg">#14100E</color>
+    <color name="bg_widget">#E6191411</color>
+    <color name="card">#221C18</color>
+    <color name="line">#322A25</color>
+    <color name="ink">#F4EFEA</color>
+    <color name="ink_2">#B6A9A0</color>
+    <color name="ink_3">#7C6F67</color>
+    <color name="accent">#DA7756</color>
+    <color name="moon">#E8D9C5</color>
+    <color name="cloud">#8A8079</color>
+    <color name="cloud_dark">#6F6862</color>
+    <color name="rain">#7FB0D8</color>
+    <color name="snow">#CFE3F2</color>
+    <color name="ic_launcher_background">#14100E</color>
+</resources>

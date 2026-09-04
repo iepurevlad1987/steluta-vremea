@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Ecranul principal, dupa varianta web: ceas mare sus, temperatura si mai mare la
+    mijloc, comentariul intr-un cartonas cu dunga portocalie, apoi zilele.
+
+    Portocaliul apare in trei locuri si atat - secundele, gradul si dunga cartonasului.
+    Restul e gri pe negru, ca iconita de vreme senina sa se vada din capatul camerei.
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:fillViewport="true"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingStart="22dp"
+        android:paddingEnd="22dp"
+        android:paddingTop="26dp"
+        android:paddingBottom="34dp">
+
+        <!-- ============ locul, ceasul, data ============ -->
+
+        <TextView
+            android:id="@+id/m_place"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/loading"
+            android:textColor="@color/ink_2"
+            android:textSize="12sp"
+            android:letterSpacing="0.14"
+            android:textAllCaps="true" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/m_clock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="--:--"
+                android:textColor="@color/ink"
+                android:textSize="56sp"
+                android:letterSpacing="-0.03" />
+
+            <TextView
+                android:id="@+id/m_seconds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:textColor="@color/accent"
+                android:textSize="19sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/m_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/ink_3"
+            android:textSize="13sp" />
+
+        <!-- ============ acum ============ -->
+
+        <ImageView
+            android:id="@+id/m_icon"
+            android:layout_width="104dp"
+            android:layout_height="104dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/ic_cloudy"
+            android:contentDescription="@string/icon_cd" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/m_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="--"
+                android:textColor="@color/ink"
+                android:textSize="86sp"
+                android:letterSpacing="-0.045"
+                android:includeFontPadding="false" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="°"
+                android:textColor="@color/accent"
+                android:textSize="40sp"
+                android:includeFontPadding="false" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/m_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:textColor="@color/ink"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/m_feels"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:textColor="@color/ink_3"
+            android:textSize="14sp" />
+
+        <!-- ============ comentariul ============ -->
+
+        <TextView
+            android:id="@+id/m_quip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/card_quip_bg"
+            android:paddingStart="18dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:textColor="@color/ink"
+            android:textSize="15sp"
+            android:lineSpacingMultiplier="1.35" />
+
+        <!-- ============ cifrele zilei ============ -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:baselineAligned="false">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/card_bg"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingTop="11dp"
+                android:paddingBottom="11dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/stat_min" android:textColor="@color/ink_3"
+                    android:textSize="10sp" android:letterSpacing="0.09" android:textAllCaps="true" />
+                <TextView android:id="@+id/m_min" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:layout_marginTop="3dp"
+                    android:textColor="@color/ink" android:textSize="17sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/card_bg"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingTop="11dp"
+                android:paddingBottom="11dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/stat_max" android:textColor="@color/ink_3"
+                    android:textSize="10sp" android:letterSpacing="0.09" android:textAllCaps="true" />
+                <TextView android:id="@+id/m_max" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:layout_marginTop="3dp"
+                    android:textColor="@color/ink" android:textSize="17sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/card_bg"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingTop="11dp"
+                android:paddingBottom="11dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/stat_wind" android:textColor="@color/ink_3"
+                    android:textSize="10sp" android:letterSpacing="0.09" android:textAllCaps="true" />
+                <TextView android:id="@+id/m_wind" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:layout_marginTop="3dp"
+                    android:textColor="@color/ink" android:textSize="17sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ============ zilele urmatoare ============ -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:layout_marginBottom="2dp"
+            android:text="@string/next_days"
+            android:textColor="@color/ink_3"
+            android:textSize="11sp"
+            android:letterSpacing="0.12"
+            android:textAllCaps="true" />
+
+        <LinearLayout
+            android:id="@+id/m_days"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:divider="@drawable/divider"
+            android:showDividers="middle" />
+
+        <!-- ============ subsol ============ -->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/m_refresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/btn_bg"
+                android:paddingStart="22dp"
+                android:paddingEnd="22dp"
+                android:text="@string/refresh"
+                android:textAllCaps="false"
+                android:textColor="@color/ink_2"
+                android:textSize="14sp"
+                android:stateListAnimator="@null" />
+
+            <Button
+                android:id="@+id/m_locate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_bg"
+                android:paddingStart="22dp"
+                android:paddingEnd="22dp"
+                android:text="@string/use_my_location"
+                android:textAllCaps="false"
+                android:textColor="@color/ink_2"
+                android:textSize="14sp"
+                android:stateListAnimator="@null" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/m_updated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/ink_3"
+            android:textSize="11sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:text="@string/widget_hint"
+            android:textColor="@color/ink_3"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.3" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Layout-ul widget-ului, dupa structura celui pe care il inlocuieste: sus locul si
+    starea vremii in stanga, data si temperatura in dreapta, iconita la mijloc; jos,
+    cinci zile.
+
+    **Numai LinearLayout si FrameLayout.** RemoteViews - singurul fel in care o aplicatie
+    poate desena pe ecranul altcuiva - accepta doar o mana de layout-uri, iar
+    ConstraintLayout nu e printre ele. Nu e o alegere de stil, e tot ce se poate.
+
+    Cele cinci zile au id-uri fixe (day0_… day4_…) in loc de o lista. O lista intr-un
+    widget cere un serviciu separat si un adaptor; pentru cinci randuri care nu se
+    schimba niciodata ca numar, ar fi de cinci ori mai mult cod care se poate strica.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/widget_bg"
+    android:padding="14dp">
+
+    <!-- ============ randul de sus: ora, vremea ============ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:baselineAligned="false">
+
+        <!-- Ora.
+
+             `TextClock` se actualizeaza singur, din minut in minut, fara nicio linie de
+             cod si fara sa trezeasca aplicatia. Un ceas desenat de noi ar fi cerut o
+             alarma la fiecare minut - adica bateria consumata pentru doua cifre. -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextClock
+                android:id="@+id/clock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:format12Hour="HH:mm"
+                android:format24Hour="HH:mm"
+                android:textColor="@color/ink"
+                android:textSize="38sp"
+                android:includeFontPadding="false" />
+
+            <TextView
+                android:id="@+id/place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@string/loading"
+                android:textColor="@color/ink_2"
+                android:textSize="13sp"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/ink_3"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <!-- iconita -->
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_cloudy"
+            android:contentDescription="@string/icon_cd" />
+
+        <!-- temperatura -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="end">
+
+            <TextView
+                android:id="@+id/temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="--°"
+                android:textColor="@color/ink"
+                android:textSize="34sp"
+                android:includeFontPadding="false" />
+
+            <TextView
+                android:id="@+id/desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/ink_2"
+                android:textSize="12sp"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+            <TextView
+                android:id="@+id/minmax"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/ink_3"
+                android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- comentariul: singurul lucru care nu exista in widget-ul inlocuit -->
+    <TextView
+        android:id="@+id/quip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/accent"
+        android:textSize="12sp"
+        android:maxLines="2"
+        android:ellipsize="end" />
+
+    <!-- FrameLayout, nu View: `RemoteViews` accepta doar o lista scurta de componente,
+         iar `View` simplu **nu e printre ele**. Un layout care contine unul nu se poate
+         desena deloc, si pe ecranul de start scrie „Can't load widget" - fara nicio
+         eroare care sa spuna de ce. -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/divider" />
+
+    <!-- ============ randul de jos: cinci zile ============ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+            <TextView android:id="@+id/day0_name" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:textColor="@color/ink_3"
+                android:textSize="10sp" android:textAllCaps="true" />
+            <ImageView android:id="@+id/day0_icon" android:layout_width="24dp"
+                android:layout_height="24dp" android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp" android:src="@drawable/ic_cloudy"
+                android:contentDescription="@string/icon_cd" />
+            <TextView android:id="@+id/day0_temps" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:textColor="@color/ink"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+            <TextView android:id="@+id/day1_name" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:textColor="@color/ink_3"
+                android:textSize="10sp" android:textAllCaps="true" />
+            <ImageView android:id="@+id/day1_icon" android:layout_width="24dp"
+                android:layout_height="24dp" android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp" android:src="@drawable/ic_cloudy"
+                android:contentDescription="@string/icon_cd" />
+            <TextView android:id="@+id/day1_temps" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:textColor="@color/ink"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+            <TextView android:id="@+id/day2_name" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:textColor="@color/ink_3"
+                android:textSize="10sp" android:textAllCaps="true" />
+            <ImageView android:id="@+id/day2_icon" android:layout_width="24dp"
+                android:layout_height="24dp" android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp" android:src="@drawable/ic_cloudy"
+                android:contentDescription="@string/icon_cd" />
+            <TextView android:id="@+id/day2_temps" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:textColor="@color/ink"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+            <TextView android:id="@+id/day3_name" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:textColor="@color/ink_3"
+                android:textSize="10sp" android:textAllCaps="true" />
+            <ImageView android:id="@+id/day3_icon" android:layout_width="24dp"
+                android:layout_height="24dp" android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp" android:src="@drawable/ic_cloudy"
+                android:contentDescription="@string/icon_cd" />
+            <TextView android:id="@+id/day3_temps" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:textColor="@color/ink"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+            <TextView android:id="@+id/day4_name" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:textColor="@color/ink_3"
+                android:textSize="10sp" android:textAllCaps="true" />
+            <ImageView android:id="@+id/day4_icon" android:layout_width="24dp"
+                android:layout_height="24dp" android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp" android:src="@drawable/ic_cloudy"
+                android:contentDescription="@string/icon_cd" />
+            <TextView android:id="@+id/day4_temps" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:textColor="@color/ink"
+                android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generat din aceeasi formula ca iconitele din PWA, ca sa fie aceeasi forma. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+    <path
+        android:pathData="M42,6a15,15 0 0,0 -14.4,10.9A12,12 0 0,0 30,40h24a12,12 0 0,0 1.4,-23.9A15,15 0 0,0 42,6z"
+        android:fillColor="@color/cloud_dark" />
+    <path
+        android:pathData="M34,42l-12,12h8l-4,12 14,-15h-8z"
+        android:fillColor="@color/accent" />
+</vector>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Steluța</string>
+    <string name="widget_label">Steluța — vremea</string>
+    <string name="widget_description">Vremea de azi și zilele următoare.</string>
+    <string name="loading">se încarcă…</string>
+    <string name="tap_to_refresh">Apasă pe widget ca să reîmprospătezi.</string>
+    <string name="refresh">Reîmprospătează</string>
+    <string name="no_data">Fără date. Verifică internetul.</string>
+    <string name="icon_cd">Starea vremii</string>
+    <string name="widget_hint">Ca să pui widget-ul: ține apăsat pe ecranul de start → Widget-uri → Steluța. Un tap pe el aduce date noi.</string>
+    <string name="stat_min">min</string>
+    <string name="stat_max">max</string>
+    <string name="stat_wind">vânt</string>
+    <string name="next_days">Zilele următoare</string>
+    <string name="use_my_location">Locația mea</string>
+    <string name="locating">Se caută…</string>
+    <string name="location_denied">Fără permisiune de localizare rămâne locul dinainte.</string>
+    <string name="location_failed">N-am găsit locația. Verifică dacă GPS-ul e pornit.</string>
+    <string name="location_found">Acum arăt vremea din %1$s.</string>
+</resources>

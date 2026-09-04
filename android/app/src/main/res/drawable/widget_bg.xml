@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Fundalul widget-ului: aproape opac, cu colturi rotunjite ca ale celorlalte
+     widget-uri din Android 12 incoace. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/bg_widget" />
+    <corners android:radius="24dp" />
+</shape>
