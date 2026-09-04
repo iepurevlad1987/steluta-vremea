@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#14100E">
+<meta name="description" content="Vremea, pe scurt și fără menajamente.">
+
+<title>Steluța</title>
+
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<link rel="preconnect" href="https://api.open-meteo.com">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main id="app" class="app is-loading">
+
+  <!-- ceasul + locul -->
+  <header class="head">
+    <div class="place">
+      <svg class="pin" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/>
+      </svg>
+      <span id="place">se caută locul…</span>
+    </div>
+    <div class="clock">
+      <span id="clock">--:--</span><span id="seconds" class="seconds">--</span>
+    </div>
+    <div id="date" class="date"></div>
+  </header>
+
+  <!-- acum -->
+  <section class="now">
+    <div id="icon" class="icon" aria-hidden="true"></div>
+    <div class="temp-wrap">
+      <span id="temp" class="temp">--</span><span class="deg">°</span>
+    </div>
+    <p id="desc" class="desc">se încarcă</p>
+    <p id="feels" class="feels"></p>
+  </section>
+
+  <!-- comentariul -->
+  <section class="quip-wrap">
+    <p id="quip" class="quip"></p>
+  </section>
+
+  <!-- cifrele zilei -->
+  <section class="stats" id="stats">
+    <div class="stat"><span class="stat-k">min</span><span class="stat-v" id="tmin">--°</span></div>
+    <div class="stat"><span class="stat-k">max</span><span class="stat-v" id="tmax">--°</span></div>
+    <div class="stat"><span class="stat-k">vânt</span><span class="stat-v" id="wind">--</span></div>
+    <div class="stat"><span class="stat-k">ploaie</span><span class="stat-v" id="rain">--</span></div>
+  </section>
+
+  <!-- zilele urmatoare -->
+  <section class="forecast">
+    <h2 class="section-title">Zilele următoare</h2>
+    <ul id="days" class="days"></ul>
+  </section>
+
+  <footer class="foot">
+    <button id="refresh" class="refresh" type="button">Reîmprospătează</button>
+    <p id="updated" class="updated"></p>
+  </footer>
+
+</main>
+
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="app.js"></script>
+</body>
+</html>

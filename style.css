@@ -1,0 +1,291 @@
+/* ==========================================================================
+   Steluța — vremea, pe scurt.
+   Dark by default. Accentul e portocaliul Claude; steluța ține locul soarelui.
+   ========================================================================== */
+
+:root {
+  --bg:         #14100E;
+  --bg-2:       #1D1815;
+  --card:       #221C18;
+  --line:       #322A25;
+  --ink:        #F4EFEA;
+  --ink-2:      #B6A9A0;
+  --ink-3:      #7C6F67;
+  --accent:     #DA7756;
+  --accent-dim: #8A4A34;
+  --cold:       #7FB0D8;
+  --warm:       #E8A05C;
+  --hot:        #E06848;
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bot: env(safe-area-inset-bottom, 0px);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  /* Lumina de sus: soarele nu se vede, dar se simte. */
+  background-image:
+    radial-gradient(120% 70% at 50% -10%, rgba(218, 119, 86, 0.16), transparent 60%);
+  background-attachment: fixed;
+}
+
+.app {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: calc(var(--safe-top) + 22px) 20px calc(var(--safe-bot) + 28px);
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+/* Cat timp nu stim nimic, nu aratam cifre false - doar se stinge putin. */
+.app.is-loading .now,
+.app.is-loading .stats,
+.app.is-loading .forecast { opacity: 0.35; }
+
+.app.is-loading .now,
+.app.is-loading .stats,
+.app.is-loading .forecast { transition: opacity .35s ease; }
+
+/* ---------- antet: loc, ceas, data ---------- */
+
+.head { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+
+.place {
+  display: flex; align-items: center; gap: 5px;
+  color: var(--ink-2);
+  font-size: 13px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.pin { width: 13px; height: 13px; fill: var(--accent); flex: none; }
+
+.clock {
+  display: flex; align-items: baseline; gap: 3px;
+  font-size: 62px;
+  font-weight: 200;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.seconds {
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--accent);
+}
+
+.date {
+  color: var(--ink-3);
+  font-size: 13px;
+  text-transform: capitalize;
+}
+
+/* ---------- acum ---------- */
+
+.now { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+
+.icon { width: 108px; height: 108px; margin-bottom: 2px; }
+
+.icon svg { width: 100%; height: 100%; display: block; }
+
+.temp-wrap { display: flex; align-items: flex-start; }
+
+.temp {
+  font-size: 104px;
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.deg {
+  font-size: 44px;
+  font-weight: 200;
+  color: var(--accent);
+  line-height: 1.15;
+}
+
+.desc {
+  font-size: 17px;
+  color: var(--ink);
+  text-transform: capitalize;
+}
+
+.feels { font-size: 14px; color: var(--ink-3); }
+
+/* ---------- comentariul ---------- */
+
+.quip-wrap {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  /* Dunga portocalie e singurul loc unde accentul e folosit ca suprafata. */
+  border-left: 3px solid var(--accent);
+}
+
+.quip {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink);
+  min-height: 1.5em;
+}
+
+/* ---------- cifrele zilei ---------- */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.stat {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 11px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.stat-k {
+  font-size: 10.5px;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.stat-v { font-size: 17px; font-weight: 500; }
+
+/* ---------- zilele urmatoare ---------- */
+
+.section-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 10px;
+}
+
+.days { list-style: none; display: flex; flex-direction: column; }
+
+.day {
+  display: grid;
+  grid-template-columns: 62px 34px 1fr 84px;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 2px;
+  border-top: 1px solid var(--line);
+}
+
+.day:first-child { border-top: none; }
+
+.day-name { font-size: 14.5px; text-transform: capitalize; }
+
+.day-name.today { color: var(--accent); font-weight: 600; }
+
+.day-icon { width: 26px; height: 26px; }
+
+.day-icon svg { width: 100%; height: 100%; display: block; }
+
+.day-rain {
+  font-size: 12px;
+  color: var(--cold);
+  text-align: left;
+}
+
+.day-rain:empty::after { content: ""; }
+
+.day-temps {
+  display: flex; justify-content: flex-end; gap: 9px;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+
+.day-min { color: var(--ink-3); }
+
+.day-max { color: var(--ink); font-weight: 500; }
+
+/* ---------- subsol ---------- */
+
+.foot { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+
+.refresh {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-family: inherit;
+  font-size: 13.5px;
+  cursor: pointer;
+  transition: border-color .15s ease, color .15s ease;
+}
+
+.refresh:hover, .refresh:focus-visible {
+  border-color: var(--accent-dim);
+  color: var(--ink);
+}
+
+.refresh:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.refresh.is-busy { opacity: .5; pointer-events: none; }
+
+.updated { font-size: 11.5px; color: var(--ink-3); }
+
+/* ---------- notificarea de jos ---------- */
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--safe-bot) + 18px);
+  transform: translateX(-50%);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 12px;
+  padding: 10px 15px;
+  font-size: 13.5px;
+  color: var(--ink);
+  max-width: min(92vw, 420px);
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, .8);
+  z-index: 10;
+}
+
+.toast[hidden] { display: none; }
+
+/* ---------- animatia steluței ---------- */
+
+@keyframes twinkle {
+  0%, 100% { transform: scale(1);    filter: drop-shadow(0 0 14px rgba(218,119,86,.45)); }
+  50%      { transform: scale(1.045); filter: drop-shadow(0 0 22px rgba(218,119,86,.65)); }
+}
+
+.star-anim { animation: twinkle 4.5s ease-in-out infinite; transform-origin: 50% 50%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .star-anim { animation: none; }
+  * { transition: none !important; }
+}
+
+/* ---------- ecrane mici ---------- */
+
+@media (max-height: 700px) {
+  .clock { font-size: 50px; }
+  .temp { font-size: 84px; }
+  .icon { width: 88px; height: 88px; }
+  .app { gap: 20px; }
+}
