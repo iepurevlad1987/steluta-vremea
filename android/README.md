@@ -74,6 +74,27 @@ zile** și **următoarele ore, din 3 în 3**, începând cu prima oră plină (l
 14:00, 17:00, 20:00, 23:00). Orele vin în același apel la Open-Meteo, deci comutarea e
 instantanee și merge și fără internet. Widget-ul ține minte modul ales.
 
+## Teme
+
+Din aplicație, butonul **„Tema widget-ului"** deschide lista:
+
+| Temă | Fundal | Text |
+|---|---|---|
+| Întunecat | maro-negru, 90% opac (cum era) | deschis |
+| Negru | negru opac | deschis |
+| Luminos | crem, aproape opac | închis |
+| Culoarea wallpaper-ului | culoarea dominantă a wallpaper-ului | după cât de deschisă e ea |
+| Semi-transparent | strat subțire, alb sau negru după wallpaper | după wallpaper |
+| Transparent | niciunul | după wallpaper |
+
+Culorile wallpaper-ului le dă Android fără nicio permisiune (`WallpaperColors`); pe
+Android 12+ și semnalul „textul închis se vede mai bine aici", același după care își
+colorează launcher-ul ceasul. Pe fundal deschis, luna, zăpada și picăturile se desenează
+mai închise (`ic_*_on_light`), ca să nu dispară.
+
+Widget-ul nu află singur când schimbi wallpaper-ul: se potrivește la următoarea
+redesenare — la deschiderea aplicației, la ↻ sau cel mult în jumătate de oră.
+
 **Un tap în rest pe widget deschide aplicația.**
 
 Singur, widget-ul se reîmprospătează o dată la 30 de minute — minimul pe care Android îl
@@ -99,7 +120,14 @@ lui apare abia după 10 secunde, deci de obicei nici nu se vede.
 **Noaptea, „senin" nu se desenează cu un soare** — se desenează cu luna. Rândul de jos,
 care rezumă zile întregi, cere mereu varianta de zi: o zi n-are cum să fie „noapte".
 
-## Ce n-a fost verificat — 1.2.0
+## Ce n-a fost verificat — 1.3.0
+
+Temele n-au fost văzute pe un ecran: emulatorul de pe PC nu pornește (lipsește driverul
+de virtualizare). Dacă după instalare widget-ul scrie „Can't load widget", vinovatul e
+aproape sigur unul dintre apelurile noi din `StelutaWidget.paint()` (`setColorFilter`,
+`setImageAlpha`, `setBackgroundColor`), pe care launcher-ul le-a refuzat.
+
+## 1.2.0
 
 Nici rândul pe ore n-a fost văzut pe un telefon: mai ales dacă titlul și butonul „ore ⇄"
 încap la înălțimea la care ții widget-ul.

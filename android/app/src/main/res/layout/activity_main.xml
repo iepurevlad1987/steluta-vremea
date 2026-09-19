@@ -256,6 +256,20 @@
                 android:stateListAnimator="@null" />
         </LinearLayout>
 
+        <!-- Tema widget-ului. Scrie pe el tema de acum; apasat, deschide lista. -->
+        <Button
+            android:id="@+id/m_theme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btn_bg"
+            android:paddingStart="22dp"
+            android:paddingEnd="22dp"
+            android:textAllCaps="false"
+            android:textColor="@color/ink_2"
+            android:textSize="14sp"
+            android:stateListAnimator="@null" />
+
         <TextView
             android:id="@+id/m_updated"
             android:layout_width="wrap_content"

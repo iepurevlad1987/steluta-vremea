@@ -24,6 +24,16 @@
     <string name="next_hours">Următoarele ore</string>
     <string name="show_hours">ore ⇄</string>
     <string name="show_days">zile ⇄</string>
+    <string name="widget_theme">Tema widget-ului: %1$s</string>
+    <string name="widget_theme_title">Tema widget-ului</string>
+    <string-array name="theme_names">
+        <item>Întunecat</item>
+        <item>Negru</item>
+        <item>Luminos</item>
+        <item>Culoarea wallpaper-ului</item>
+        <item>Semi-transparent</item>
+        <item>Transparent</item>
+    </string-array>
     <string name="today">Azi</string>
     <string name="notif_channel">Reîmprospătarea widget-ului</string>
     <string name="notif_refreshing">Mă uit la cer și caut unde ești…</string>

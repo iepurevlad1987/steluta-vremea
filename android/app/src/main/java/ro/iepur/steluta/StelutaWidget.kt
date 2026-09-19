@@ -138,6 +138,7 @@ class StelutaWidget : AppWidgetProvider() {
             v.setOnClickPendingIntent(R.id.refresh, refreshIntent(context))
             v.setOnClickPendingIntent(R.id.mode_toggle, toggleIntent(context))
             v.setImageViewResource(R.id.refresh, R.drawable.ic_refresh)
+            val pal = paint(context, v)
 
             val hoursMode = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
                 .getBoolean(SHOW_HOURS, false)
@@ -165,7 +166,7 @@ class StelutaWidget : AppWidgetProvider() {
             v.setTextViewText(R.id.temp, "${w.temp}°")
             v.setTextViewText(R.id.minmax, "${w.max}°\n${w.min}°")
             v.setTextViewText(R.id.quip, Quips.forWeather(context, w))
-            v.setImageViewResource(R.id.icon, Wmo.iconOf(w.code, w.isDay))
+            v.setImageViewResource(R.id.icon, Wmo.iconOf(w.code, w.isDay, pal.onLight))
 
             val nameIds = intArrayOf(R.id.day0_name, R.id.day1_name, R.id.day2_name, R.id.day3_name, R.id.day4_name)
             val iconIds = intArrayOf(R.id.day0_icon, R.id.day1_icon, R.id.day2_icon, R.id.day3_icon, R.id.day4_icon)
@@ -175,13 +176,13 @@ class StelutaWidget : AppWidgetProvider() {
             val cells: List<Triple<String, Int, String>> = if (hoursMode) {
                 nextHours(w.hours).map { h ->
                     // Orele au iconita lor de zi sau de noapte: la 23:00 senin e luna.
-                    Triple(h.label, Wmo.iconOf(h.code, h.isDay), "${h.temp}°")
+                    Triple(h.label, Wmo.iconOf(h.code, h.isDay, pal.onLight), "${h.temp}°")
                 }
             } else {
                 // Randul de jos incepe de maine: ziua de azi e deja sus, cu cifra ei mare.
                 // Zilele intregi se deseneaza mereu cu iconita de zi.
                 w.days.drop(1).take(5).map { d ->
-                    Triple(shortDayName(d.iso, locale), Wmo.iconOf(d.code, isDay = true), "${d.max}°/${d.min}°")
+                    Triple(shortDayName(d.iso, locale), Wmo.iconOf(d.code, isDay = true, onLight = pal.onLight), "${d.max}°/${d.min}°")
                 }
             }
 
@@ -201,6 +202,33 @@ class StelutaWidget : AppWidgetProvider() {
             }
 
             return v
+        }
+
+        /**
+         * Culorile temei alese (vezi [WidgetTheme]): fundalul, linia si fiecare text.
+         *
+         * Se pun la **fiecare** desenare, nu doar la schimbarea temei: `updateAppWidget`
+         * porneste de la layout-ul din XML, deci ce nu se scrie acum revine la culorile de
+         * acolo.
+         */
+        private fun paint(context: Context, v: RemoteViews): Palette {
+            val p = WidgetTheme.palette(context)
+
+            // Fundalul din XML e opac. `setColorFilter` ii schimba culoarea si ii pastreaza
+            // forma (colturile), iar `setImageAlpha` il face cat de transparent cere tema.
+            v.setInt(R.id.widget_bg, "setColorFilter", p.bg)
+            v.setInt(R.id.widget_bg, "setImageAlpha", p.bgAlpha)
+            v.setInt(R.id.divider, "setBackgroundColor", p.line)
+
+            listOf(R.id.clock, R.id.temp).forEach { v.setTextColor(it, p.ink) }
+            listOf(R.id.place, R.id.desc).forEach { v.setTextColor(it, p.ink2) }
+            listOf(R.id.date, R.id.minmax, R.id.bottom_title).forEach { v.setTextColor(it, p.ink3) }
+            listOf(R.id.quip, R.id.mode_toggle).forEach { v.setTextColor(it, p.accent) }
+            listOf(R.id.day0_name, R.id.day1_name, R.id.day2_name, R.id.day3_name, R.id.day4_name)
+                .forEach { v.setTextColor(it, p.ink3) }
+            listOf(R.id.day0_temps, R.id.day1_temps, R.id.day2_temps, R.id.day3_temps, R.id.day4_temps)
+                .forEach { v.setTextColor(it, p.ink) }
+            return p
         }
 
         /**

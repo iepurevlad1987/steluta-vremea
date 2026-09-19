@@ -2,6 +2,7 @@ package ro.iepur.steluta
 
 import android.Manifest
 import android.app.Activity
+import android.app.AlertDialog
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Intent
@@ -74,6 +75,8 @@ class MainActivity : Activity() {
         // deschidere, nu: altfel fiecare deschidere ar sari la alt text.
         findViewById<Button>(R.id.m_refresh).setOnClickListener { load(shuffle = true) }
         findViewById<Button>(R.id.m_locate).setOnClickListener { locate() }
+        findViewById<Button>(R.id.m_theme).setOnClickListener { pickTheme() }
+        showThemeName()
 
         // Ce stiam deja, imediat - la fel ca widget-ul. Reteaua vine peste el.
         WeatherStore.load(this)?.let { show(it, fromCache = true) }
@@ -93,6 +96,10 @@ class MainActivity : Activity() {
 
     override fun onStart() {
         super.onStart()
+        // Temele „wallpaper", „semi-transparent" si „transparent" se potrivesc dupa
+        // wallpaper-ul de acum, pe care widget-ul nu-l poate urmari singur. Deschiderea
+        // aplicatiei e un moment bun sa se uite din nou.
+        StelutaWidget.redrawAll(this)
         showClock()
         main.postDelayed(tick, 1000)
     }
@@ -201,6 +208,30 @@ class MainActivity : Activity() {
         } else {
             Toast.makeText(this, R.string.location_denied, Toast.LENGTH_LONG).show()
         }
+    }
+
+    /**
+     * Lista de teme. Alegerea se vede imediat pe ecranul de start: widget-ul se redeseneaza
+     * din ce e salvat, fara retea.
+     */
+    private fun pickTheme() {
+        val names = resources.getStringArray(R.array.theme_names)
+        val current = WidgetTheme.load(this).ordinal
+        AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Dialog_Alert)
+            .setTitle(R.string.widget_theme_title)
+            .setSingleChoiceItems(names, current) { dialog, which ->
+                ThemeId.entries.getOrNull(which)?.let { WidgetTheme.save(this, it) }
+                showThemeName()
+                StelutaWidget.redrawAll(this)
+                dialog.dismiss()
+            }
+            .show()
+    }
+
+    private fun showThemeName() {
+        val names = resources.getStringArray(R.array.theme_names)
+        val name = names.getOrElse(WidgetTheme.load(this).ordinal) { "" }
+        findViewById<Button>(R.id.m_theme).text = getString(R.string.widget_theme, name)
     }
 
     /** Ii spune widget-ului sa se redeseneze acum, cu locul nou. */

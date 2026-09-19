@@ -12,12 +12,27 @@
     widget cere un serviciu separat si un adaptor; pentru cinci randuri care nu se
     schimba niciodata ca numar, ar fi de cinci ori mai mult cod care se poate strica.
 -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Fundalul e o imagine separata, nu `background` pe radacina: unei imagini i se pot
+         schimba din cod culoarea (`setColorFilter`) si transparenta (`setImageAlpha`),
+         amandoua permise de RemoteViews, iar colturile rotunjite raman. Un `background`
+         schimbat din cod ar fi pierdut colturile. Vezi WidgetTheme.kt. -->
+    <ImageView
+        android:id="@+id/widget_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/widget_bg"
+        android:importantForAccessibility="no" />
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/widget_bg"
     android:padding="14dp">
 
     <!-- ============ randul de sus: ora, vremea ============ -->
@@ -152,6 +167,7 @@
          desena deloc, si pe ecranul de start scrie „Can't load widget" - fara nicio
          eroare care sa spuna de ce. -->
     <FrameLayout
+        android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@drawable/divider" />
@@ -292,3 +308,4 @@
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
+</FrameLayout>

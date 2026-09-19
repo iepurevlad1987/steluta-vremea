@@ -103,15 +103,27 @@ object Wmo {
      *
      * Randul de jos, care rezuma zile intregi, cere mereu varianta de zi: o zi n-are cum
      * sa fie „noapte".
+     *
+     * [onLight]: widget-ul sta pe un fundal deschis (tema Luminos, wallpaper deschis).
+     * Luna, zapada si picaturile au atunci varianta `_on_light`, mai inchisa; celelalte
+     * se vad bine pe orice fundal si raman la fel.
      */
-    fun iconOf(code: Int, isDay: Boolean): Int = when (kindOf(code)) {
-        Kind.CLEAR -> if (isDay) R.drawable.ic_clear else R.drawable.ic_clear_night
-        Kind.PARTLY -> if (isDay) R.drawable.ic_partly else R.drawable.ic_partly_night
+    fun iconOf(code: Int, isDay: Boolean, onLight: Boolean = false): Int = when (kindOf(code)) {
+        Kind.CLEAR -> when {
+            isDay -> R.drawable.ic_clear
+            onLight -> R.drawable.ic_clear_night_on_light
+            else -> R.drawable.ic_clear_night
+        }
+        Kind.PARTLY -> when {
+            isDay -> R.drawable.ic_partly
+            onLight -> R.drawable.ic_partly_night_on_light
+            else -> R.drawable.ic_partly_night
+        }
         Kind.CLOUDY -> R.drawable.ic_cloudy
         Kind.FOG -> R.drawable.ic_fog
-        Kind.DRIZZLE -> R.drawable.ic_drizzle
-        Kind.RAIN -> R.drawable.ic_rain
-        Kind.SNOW -> R.drawable.ic_snow
+        Kind.DRIZZLE -> if (onLight) R.drawable.ic_drizzle_on_light else R.drawable.ic_drizzle
+        Kind.RAIN -> if (onLight) R.drawable.ic_rain_on_light else R.drawable.ic_rain
+        Kind.SNOW -> if (onLight) R.drawable.ic_snow_on_light else R.drawable.ic_snow
         Kind.STORM -> R.drawable.ic_storm
     }
 }

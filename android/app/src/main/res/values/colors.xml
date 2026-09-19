@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="bg">#14100E</color>
-    <color name="bg_widget">#E6191411</color>
+    <color name="bg_widget_solid">#191411</color>
     <color name="card">#221C18</color>
     <color name="line">#322A25</color>
     <color name="ink">#F4EFEA</color>
@@ -13,5 +13,10 @@
     <color name="cloud_dark">#6F6862</color>
     <color name="rain">#7FB0D8</color>
     <color name="snow">#CFE3F2</color>
+    <!-- Variantele pentru fundal deschis (tema Luminos, wallpaper deschis): luna si zapada
+         originale sunt aproape albe si s-ar pierde pe crem. -->
+    <color name="moon_on_light">#9C8467</color>
+    <color name="snow_on_light">#5E97C4</color>
+    <color name="rain_on_light">#4A86B8</color>
     <color name="ic_launcher_background">#14100E</color>
 </resources>

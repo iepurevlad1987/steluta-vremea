@@ -28,6 +28,17 @@
     <string name="next_hours">Next hours</string>
     <string name="show_hours">hours ⇄</string>
     <string name="show_days">days ⇄</string>
+    <string name="widget_theme">Widget theme: %1$s</string>
+    <string name="widget_theme_title">Widget theme</string>
+    <!-- In ordinea din ThemeId (WidgetTheme.kt); un element nou se adauga la sfarsit. -->
+    <string-array name="theme_names">
+        <item>Dark</item>
+        <item>Black</item>
+        <item>Light</item>
+        <item>Wallpaper color</item>
+        <item>Semi-transparent</item>
+        <item>Transparent</item>
+    </string-array>
     <string name="today">Today</string>
     <string name="notif_channel">Widget refresh</string>
     <string name="notif_refreshing">Checking the sky and where you are…</string>
