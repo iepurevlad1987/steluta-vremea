@@ -113,17 +113,39 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!-- comentariul: singurul lucru care nu exista in widget-ul inlocuit -->
-    <TextView
-        android:id="@+id/quip"
+    <!-- comentariul: singurul lucru care nu exista in widget-ul inlocuit, si langa el
+         butonul care il schimba. Butonul sta aici si nu intr-un colt fiindca el face trei
+         lucruri, iar singurul care se vede sigur la fiecare apasare e comentariul nou. -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="8dp"
-        android:textColor="@color/accent"
-        android:textSize="12sp"
-        android:maxLines="2"
-        android:ellipsize="end" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/quip"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/accent"
+            android:textSize="12sp"
+            android:maxLines="2"
+            android:ellipsize="end" />
+
+        <!-- 32dp de apasat, cu iconita de 18dp inauntru: mai mic de-atat, degetul nimereste
+             widget-ul din spate si se deschide aplicatia in loc de reimprospatare. -->
+        <ImageView
+            android:id="@+id/refresh"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:padding="7dp"
+            android:background="@drawable/widget_btn_bg"
+            android:src="@drawable/ic_refresh"
+            android:contentDescription="@string/refresh_cd" />
+    </LinearLayout>
 
     <!-- FrameLayout, nu View: `RemoteViews` accepta doar o lista scurta de componente,
          iar `View` simplu **nu e printre ele**. Un layout care contine unul nu se poate

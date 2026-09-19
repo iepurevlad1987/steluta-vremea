@@ -21,8 +21,6 @@ import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
-private val RO = Locale.forLanguageTag("ro-RO")
-
 /**
  * Ecranul principal.
  *
@@ -36,6 +34,21 @@ private val RO = Locale.forLanguageTag("ro-RO")
 private const val REQ_LOCATION = 1
 
 class MainActivity : Activity() {
+
+    companion object {
+        /**
+         * Cu actiunea asta o deschide butonul ↻ din widget cand aplicatia n-are inca voie
+         * la locatie: ecranul cere permisiunea si cauta locul, ca si cum ai fi apasat
+         * „Locația mea".
+         */
+        const val ACTION_LOCATE = "ro.iepur.steluta.LOCATE"
+    }
+
+    /**
+     * Limba telefonului, citita la fiecare folosire. Daca omul schimba limba, Android
+     * recreeaza ecranul, iar textele scrise din cod trebuie sa vina si ele in cea noua.
+     */
+    private val locale: Locale get() = Locale.getDefault()
 
     private val main = Handler(Looper.getMainLooper())
 
@@ -57,12 +70,25 @@ class MainActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        findViewById<Button>(R.id.m_refresh).setOnClickListener { load() }
+        // Butonul de aici schimba si comentariul, ca ↻ din widget. Reimprospatarea de la
+        // deschidere, nu: altfel fiecare deschidere ar sari la alt text.
+        findViewById<Button>(R.id.m_refresh).setOnClickListener { load(shuffle = true) }
         findViewById<Button>(R.id.m_locate).setOnClickListener { locate() }
 
         // Ce stiam deja, imediat - la fel ca widget-ul. Reteaua vine peste el.
         WeatherStore.load(this)?.let { show(it, fromCache = true) }
         load()
+        handle(intent)
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        handle(intent)
+    }
+
+    private fun handle(intent: Intent?) {
+        if (intent?.action == ACTION_LOCATE) locate()
     }
 
     override fun onStart() {
@@ -78,20 +104,29 @@ class MainActivity : Activity() {
 
     private fun showClock() {
         val now = Date()
-        findViewById<TextView>(R.id.m_clock).text = SimpleDateFormat("HH:mm", RO).format(now)
-        findViewById<TextView>(R.id.m_seconds).text = SimpleDateFormat("ss", RO).format(now)
+        findViewById<TextView>(R.id.m_clock).text = SimpleDateFormat("HH:mm", locale).format(now)
+        findViewById<TextView>(R.id.m_seconds).text = SimpleDateFormat("ss", locale).format(now)
         findViewById<TextView>(R.id.m_date).text =
-            SimpleDateFormat("EEEE, d MMMM", RO).format(now)
-                .replaceFirstChar { it.uppercase(RO) }
+            SimpleDateFormat("EEEE, d MMMM", locale).format(now)
+                .replaceFirstChar { it.uppercase(locale) }
     }
 
-    private fun load() {
+    private fun load(shuffle: Boolean = false) {
         val btn = findViewById<Button>(R.id.m_refresh)
         btn.isEnabled = false
 
         Thread {
             val fresh = WeatherApi.fetch(PlaceStore.load(this))
             if (fresh != null) WeatherStore.save(this, fresh)
+            if (shuffle) {
+                (fresh ?: WeatherStore.load(this))?.let { w ->
+                    Quips.shuffle(this, w)
+                    // Widget-ul citeste acelasi comentariu; fara asta ar ramane pe cel vechi
+                    // pana la urmatoarea lui reimprospatare.
+                    StelutaWidget.redrawAll(this)
+                    if (fresh == null) main.post { show(w, fromCache = true) }
+                }
+            }
             main.post {
                 btn.isEnabled = true
                 if (fresh != null) {
@@ -158,6 +193,10 @@ class MainActivity : Activity() {
         if (requestCode != REQ_LOCATION) return
 
         if (grantResults.firstOrNull() == PackageManager.PERMISSION_GRANTED) {
+            // Butonul ↻ din widget se leaga altfel cu permisiunea data (vezi
+            // StelutaWidget.refreshIntent), deci widget-ul trebuie redesenat acum -
+            // chiar daca locatia de mai jos nu se gaseste.
+            StelutaWidget.redrawAll(this)
             locate()
         } else {
             Toast.makeText(this, R.string.location_denied, Toast.LENGTH_LONG).show()
@@ -182,10 +221,10 @@ class MainActivity : Activity() {
         findViewById<ImageView>(R.id.m_icon).setImageResource(Wmo.iconOf(w.code, w.isDay))
         findViewById<TextView>(R.id.m_temp).text = w.temp.toString()
         findViewById<TextView>(R.id.m_desc).text =
-            Wmo.labelOf(w.code).replaceFirstChar { it.uppercase(RO) }
+            Wmo.labelOf(this, w.code).replaceFirstChar { it.uppercase(locale) }
         findViewById<TextView>(R.id.m_feels).text =
-            if (w.feels != w.temp) "se simte ca ${w.feels}°" else ""
-        findViewById<TextView>(R.id.m_quip).text = Quips.forWeather(w)
+            if (w.feels != w.temp) getString(R.string.feels_like, w.feels) else ""
+        findViewById<TextView>(R.id.m_quip).text = Quips.forWeather(this, w)
 
         findViewById<TextView>(R.id.m_min).text = "${w.min}°"
         findViewById<TextView>(R.id.m_max).text = "${w.max}°"
@@ -193,9 +232,9 @@ class MainActivity : Activity() {
 
         showDays(w)
 
-        val t = SimpleDateFormat("HH:mm", RO).format(Date(w.at))
+        val t = SimpleDateFormat("HH:mm", locale).format(Date(w.at))
         findViewById<TextView>(R.id.m_updated).text =
-            if (fromCache) "date salvate, de la $t" else "actualizat la $t"
+            getString(if (fromCache) R.string.updated_cached else R.string.updated_fresh, t)
     }
 
     /**
@@ -233,9 +272,9 @@ class MainActivity : Activity() {
             cal.get(Calendar.DAY_OF_YEAR) == today.get(Calendar.DAY_OF_YEAR)
 
         if (sameDay) {
-            "Azi"
+            getString(R.string.today)
         } else {
-            SimpleDateFormat("EEE", RO).format(cal.time).replaceFirstChar { it.uppercase(RO) }
+            SimpleDateFormat("EEE", locale).format(cal.time).replaceFirstChar { it.uppercase(locale) }
         }
     } catch (e: Exception) {
         ""

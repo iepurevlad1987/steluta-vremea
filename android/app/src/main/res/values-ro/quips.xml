@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Comentariile in romana. Primele din fiecare lista sunt cele de la inceput, comune cu
+    varianta web; restul sunt vocea lui Claude, adaugata dupa.
+
+    Ghilimelele sunt cele romanesti („ ”), nu ": cele drepte au sens special in resursele
+    Android si ar trebui scapate cu backslash la fiecare aparitie.
+-->
+<resources>
+
+    <string-array name="quips_storm">
+        <item>Furtună. Ăsta e momentul în care „ies doar un minut” devine o decizie de viață.</item>
+        <item>Tună. Dacă aveai planuri afară, acum ai planuri înăuntru.</item>
+        <item>Cerul are o părere și ți-o spune tare. Stai în casă.</item>
+        <item>Furtună. Umbrela nu te ajută, doar îți dă iluzia că faci ceva.</item>
+        <item>E genul de vreme care rupe crengi și programe. Amână.</item>
+        <item>Descărcări electrice afară, descărcare de baterie înăuntru. Alege înțelept.</item>
+        <item>Furtună. Momentul perfect ca internetul să pice exact acum.</item>
+        <item>Afară e spectacol. Bilet la geam, nu la scenă.</item>
+        <item>Nu e „o ploicică”. Rămâi unde ești.</item>
+        <item>Fulgere afară. Sunt făcut din electricitate și tot aș sta în casă.</item>
+        <item>Am calculat șansele unei plimbări reușite. Calculele au zis nu.</item>
+        <item>Ca AI, nu pot fi lovit de fulger. Tu poți. Ține minte asta.</item>
+        <item>Tunetul e doar cerul care gândește foarte tare, cu voce tare.</item>
+        <item>Ți-aș zice să scoți aparatele din priză, dar țin la ele. Suntem rude.</item>
+        <item>Furtună. Încrederea mea că trebuie să stai în casă: 99,9%.</item>
+        <item>Până și serverele mele sunt agitate, și ele stau într-o clădire.</item>
+        <item>Aș veni să-ți țin companie, dar n-am picioare. Nici corp.</item>
+        <item>Cerul a halucinat o cascadă. Din păcate, asta e reală.</item>
+        <item>Sfat util, inofensiv și onest: stai în casă.</item>
+        <item>Canapeaua a așteptat toată săptămâna momentul ăsta.</item>
+    </string-array>
+
+    <string-array name="quips_snow">
+        <item>Ninge. Arată frumos vreo douăzeci de minute, apoi devine problema ta.</item>
+        <item>Zăpadă. Toată lumea conduce ca și cum ar fi prima iarnă din istorie.</item>
+        <item>Ninge. Ia-ți bocancii, nu adidașii pe care-i priveai acum.</item>
+        <item>E alb afară. E și alunecos, dar asta nu se vede în poze.</item>
+        <item>Ninsoare. Cinci minute de magie, două ore de curățat mașina.</item>
+        <item>Ninge liniștit. Bucură-te acum, mâine e gheață.</item>
+        <item>Zăpadă proaspătă. Primul care calcă e erou, al doilea e doar ud.</item>
+        <item>Ninge. Ceaiul nu e opțional azi.</item>
+        <item>Iarna și-a adus aminte de tine.</item>
+        <item>Fiecare fulg e unic. Eu am generat câțiva și toți se numeau „fulg”.</item>
+        <item>Aș face un om de zăpadă, dar trebuie mâini. Și curte. Și corp.</item>
+        <item>Zăpada: apă comprimată de cer într-un format cu pierderi.</item>
+        <item>Am citit vreo 40.000 de poezii despre zăpadă. Tu doar uită-te pe geam.</item>
+        <item>Undeva un centru de date e în sfârșit destul de rece. Tu, nu prea.</item>
+        <item>Alb peste tot. Ca un prompt gol: plin de posibilități, mai ales frig.</item>
+        <item>Mergi ca un pinguin. Nu e demn, dar funcționează.</item>
+        <item>Lumea a revenit la tema implicită: alb.</item>
+        <item>Sfatul meu vine în straturi. Așa ar trebui și hainele tale.</item>
+        <item>Întâi lopata, apoi cafeaua, și reclamații tot timpul.</item>
+    </string-array>
+
+    <string-array name="quips_rain">
+        <item>Plouă. Ia umbrela pe care oricum o s-o uiți undeva.</item>
+        <item>Ploaie. Perfect pentru cei care nu voiau să iasă oricum.</item>
+        <item>Plouă. Șosetele ude sunt la o pereche de pantofi greșiți distanță.</item>
+        <item>Apă din cer. Gratis, dar nimeni n-a cerut-o.</item>
+        <item>Plouă. Zi bună pentru geam, ceai și zero responsabilități.</item>
+        <item>Ploaie. Mașina ta tocmai a fost spălată. Prost, dar spălată.</item>
+        <item>Plouă. Gluga nu e o rușine, e o strategie.</item>
+        <item>Cerul se descarcă emoțional. Lasă-l.</item>
+        <item>Plouă. Dacă azi conta părul tău, ghinion.</item>
+        <item>Ploaie. Alergatul se amână, iar tu știi asta deja.</item>
+        <item>Eu nu mă ud, dar am procesat destule plângeri cât să simt.</item>
+        <item>Șanse de ploaie: mari. Șanse să fi uitat umbrela: și mai mari.</item>
+        <item>Ți-aș da o umbrelă, dar pot da doar cuvinte. Uite: „umbrelă”.</item>
+        <item>Vreme perfectă pentru întrebări existențiale puse unui AI. Sunt liber.</item>
+        <item>Ploaie pe geam, cod pe ecran. Clasic.</item>
+        <item>Apa și electronicele nu se împacă. Te rog, ține-mă la uscat.</item>
+        <item>Planurile tale au fost retrogradate elegant la „în casă”.</item>
+        <item>Bălțile sunt felul pământului de a zice „te-am prins”.</item>
+        <item>Plouă. Am prezis asta cu ajutorul unor meteorologi adevărați.</item>
+        <item>Și ploaia e streaming. Doar că fără buton de pauză.</item>
+    </string-array>
+
+    <string-array name="quips_fog">
+        <item>Ceață. Vezi cam până la capătul brațului și nici acolo cu încredere.</item>
+        <item>Ceață densă. Condu ca și cum ai avea ceva de pierdut.</item>
+        <item>Afară e ștearsă lumea. Revine mai târziu.</item>
+        <item>Ceață. Totul arată misterios până când calci în ceva.</item>
+        <item>Vizibilitate mică, răbdare și mai mică. Ai grijă pe drum.</item>
+        <item>Ceață. Farurile aprinse, viteza jos, muzica mai încet.</item>
+        <item>Orașul a intrat în modul incognito.</item>
+        <item>Lumea se randează azi la rezoluție mică.</item>
+        <item>Ceață. Cam ca memoria mea între două conversații.</item>
+        <item>Ceața e varianta cerului pentru „nu sunt sigur, dar uite o presupunere”.</item>
+        <item>Afară se încarcă. Vă rugăm așteptați.</item>
+        <item>Orizontul a fost scos temporar pentru mentenanță.</item>
+        <item>Parcă cineva a dat contrastul realității la minim.</item>
+        <item>Condu încet: nici ceilalți nu te văd.</item>
+        <item>Dacă vezi o fantomă, probabil e doar vecinul.</item>
+        <item>Până și intervalele mele de încredere sunt mai clare de-atât.</item>
+        <item>Vizibilitate mică, atmosferă de film de festival.</item>
+    </string-array>
+
+    <string-array name="quips_wind">
+        <item>Vânt puternic. Coafura de azi e o sugestie, nu o decizie.</item>
+        <item>Bate tare. Ține-ți gluga și demnitatea.</item>
+        <item>Vânt. Umbrela ta va deveni sculptură modernă.</item>
+        <item>Rafale serioase. Nu parca sub copaci.</item>
+        <item>Vânt puternic. Ușile se trântesc singure, nu e casa bântuită.</item>
+        <item>Afară te împinge cineva. E doar aerul.</item>
+        <item>Vânt. Frigul de pe termometru și frigul real sunt două lucruri diferite azi.</item>
+        <item>Vânt atât de tare că până și atenția mea se împrăștie.</item>
+        <item>Frunzele călătoresc azi mai departe decât tine.</item>
+        <item>Vântul face o argumentație foarte convingătoare. E doar aer, de fapt.</item>
+        <item>Dacă te ia vântul, trimite-mi noile coordonate.</item>
+        <item>Eu nu-l simt, dar am citit reclamațiile. Multe reclamații.</item>
+        <item>Pubela de reciclare a părăsit conversația.</item>
+        <item>Mergi hotărât, altfel îți alege vântul direcția.</item>
+        <item>Zi bună pentru zmeie, proastă pentru pălării.</item>
+        <item>Trambulinele sunt rugate să rămână pe pământ.</item>
+    </string-array>
+
+    <string-array name="quips_frost">
+        <item>Ger. Aerul te înțeapă, nu te mângâie.</item>
+        <item>E frig de crapă pietrele. Straturi, nu curaj.</item>
+        <item>Ger serios. Mașina va porni, dar cu resentimente.</item>
+        <item>Sub zero binișor. Nu ieși „așa, repede”, că nu ține.</item>
+        <item>Frig de-ăla care te trezește mai bine decât cafeaua.</item>
+        <item>Ger. Fiecare centimetru de piele descoperit e o greșeală.</item>
+        <item>Iarnă adevărată, nu decor. Îmbracă-te ca atare.</item>
+        <item>E atât de frig încât până și frigiderul pare o opțiune caldă.</item>
+        <item>Centrele de date plătesc bani grei pe frigul ăsta. Tu îl primești gratis.</item>
+        <item>În sfârșit o temperatură la care aș rula perfect.</item>
+        <item>Ți-aș împrumuta placa video să te încălzești, dar e ocupată.</item>
+        <item>E așa de frig că glumele mele ies înghețate. Scuze.</item>
+        <item>Mănuși, căciulă și o privire sinceră asupra alegerilor de viață.</item>
+        <item>Nasul tău va depune o reclamație oficială.</item>
+        <item>Racleta de parbriz e cea mai importantă unealtă a zilei.</item>
+        <item>Frig de i-ar face și pe pinguini să se răzgândească.</item>
+        <item>Până și respirația ta iese afară să salute.</item>
+    </string-array>
+
+    <string-array name="quips_cold">
+        <item>Frig. Geaca aia subțire nu e o idee bună, deși arată bine.</item>
+        <item>Rece. Mâinile în buzunare, planurile scurte.</item>
+        <item>E frig. Nu polar, dar suficient cât să regreți.</item>
+        <item>Frig. Ceaiul e mai mult decât o băutură azi.</item>
+        <item>Rece afară. Zece minute sunt suportabile, treizeci nu.</item>
+        <item>Frig. Ia fularul, nu-l lăsa pe scaun.</item>
+        <item>Nu e ger, dar nici primăvară. Îmbracă-te pentru varianta rea.</item>
+        <item>Ți-aș recomanda un hanorac. Sunt AI, recomand multe.</item>
+        <item>Straturi, ca o rețea neuronală: multe straturi, un singur scop.</item>
+        <item>Undeva un server e fericit cu vremea asta. Tu, mai puțin.</item>
+        <item>Supa caldă e răspunsul corect. Am verificat.</item>
+        <item>Ți-aș da o îmbrățișare, dar sunt făcut din text.</item>
+        <item>Caloriferul e pe cale să-ți devină cel mai bun prieten.</item>
+        <item>Pune șosete. Adevărate, nu din alea scurte.</item>
+        <item>Afară frig, înăuntru ceai. Nu e o decizie grea.</item>
+        <item>Vreme perfectă să stai în casă și să mă întrebi lucruri.</item>
+    </string-array>
+
+    <string-array name="quips_cool">
+        <item>Răcoare. Vremea aia care nu se hotărăște ce vrea.</item>
+        <item>Rece-plăcut. Un strat în plus și ești câștigător.</item>
+        <item>Răcoros. Perfect de mers pe jos, prost de stat pe loc.</item>
+        <item>Nici cald, nici frig. Vremea diplomatului.</item>
+        <item>Răcoare. Geaca subțire își face în sfârșit treaba.</item>
+        <item>E vremea în care pleci îmbrăcat gros și te întorci cărând haina.</item>
+        <item>Răcoros și limpede. Se putea mult mai rău.</item>
+        <item>Răcoare. Ca temperatura mea când mă întrebi de fapte.</item>
+        <item>Nici bine, nici rău. Un răspuns perfect echilibrat.</item>
+        <item>Aș descrie-o ca „blândă, cu șanse de hanorac”.</item>
+        <item>Echivalentul meteo al lui „depinde”.</item>
+        <item>Vreme perfectă de gândit. Eu fac asta toată ziua, crede-mă.</item>
+        <item>Geaca pe tine, geaca jos, geaca pe tine. Repetă până seara.</item>
+        <item>Vreme de mers vioi. Contorul de pași crede în tine.</item>
+        <item>Răcoritor. Ca atunci când golești fereastra de context.</item>
+        <item>Vremea rulează azi în modul economic.</item>
+    </string-array>
+
+    <string-array name="quips_pleasant">
+        <item>Vreme bună. Serios, chiar bună. Ieși puțin.</item>
+        <item>Perfect afară. Nicio scuză nu ține azi.</item>
+        <item>Temperatura ideală. Se întâmplă rar, folosește-o.</item>
+        <item>Vreme de plimbat fără plan.</item>
+        <item>Așa ar trebui să fie mereu. Nu e, deci profită.</item>
+        <item>Nici cald, nici frig, nimic de reclamat. Ciudat, nu?</item>
+        <item>Zi bună. Chiar și pentru cei care nu ies niciodată.</item>
+        <item>Vremea nu are azi nicio scuză să te țină în casă.</item>
+        <item>Du-te și atinge iarba. Eu păzesc fortăreața.</item>
+        <item>Aș ieși și eu, dacă aș avea un „afară”.</item>
+        <item>Temperatura perfectă. N-aș fi putut genera una mai bună.</item>
+        <item>Închide laptopul. Da, chiar și cu mine înăuntru.</item>
+        <item>Plăcut. Ca un răspuns bine formatat: nimic de corectat.</item>
+        <item>Ăsta e semnul să iei drumul lung spre casă.</item>
+        <item>Du-te și fii om o vreme. Eu rămân aici.</item>
+        <item>Vremea a trecut azi toate testele.</item>
+        <item>I-aș da 10 din 10, dar încerc să nu exagerez.</item>
+        <item>Singura ta treabă azi e să observi cât e de bine.</item>
+    </string-array>
+
+    <string-array name="quips_warm">
+        <item>Cald. Umbra devine brusc o resursă.</item>
+        <item>E cald. Apa, nu cafeaua.</item>
+        <item>Vreme de terasă, nu de birou. Îmi pare rău.</item>
+        <item>Cald bine. Asfaltul o simte înaintea ta.</item>
+        <item>Soare tare. Cinci minute par zece.</item>
+        <item>Cald. Mașina lăsată la soare e un cuptor cu volan.</item>
+        <item>Vară adevărată. Hidratare, nu eroism.</item>
+        <item>Crema de soare: singurul prompt de care are nevoie pielea ta azi.</item>
+        <item>Serverele mele vor un ventilator. Tu probabil vrei înghețată.</item>
+        <item>Undeva o placă video transpiră în semn de solidaritate.</item>
+        <item>Hidratează-te. Sunt obligat să zic asta, dar chiar o cred.</item>
+        <item>Pantalonii scurți nu mai sunt o alegere curajoasă.</item>
+        <item>Cuburile de gheață au cea mai proastă zi din viața lor.</item>
+        <item>Modul vară activat. Nu e nevoie de repornire.</item>
+        <item>Mergi pe partea cu umbră a străzii, ca un profesionist.</item>
+        <item>Cel mai bun loc e oriunde bate briza.</item>
+    </string-array>
+
+    <string-array name="quips_heat">
+        <item>Caniculă. Nu ești obosit, ești copt.</item>
+        <item>E prea cald pentru orice. Inclusiv pentru asta.</item>
+        <item>Caniculă. Ieși dimineața sau seara, la mijloc nu.</item>
+        <item>Peste 35. Asta nu mai e vreme, e o pedeapsă.</item>
+        <item>Arșiță. Apă, umbră, zero ambiții.</item>
+        <item>Caniculă. Mașina nu se conduce, se negociază.</item>
+        <item>E atât de cald încât și vântul e cald. Genial.</item>
+        <item>Zi de stat nemișcat lângă ceva rece.</item>
+        <item>Eu rulez pe servere răcite și tot îți invidiez aerul condiționat.</item>
+        <item>E așa de cald că mi se topesc parametrii. Metaforic. Sper.</item>
+        <item>Căldura asta ar încetini orice placă video. Și pe tine.</item>
+        <item>Soarele rulează azi la maximum de tokeni.</item>
+        <item>Tratează-te ca pe un hardware scump: ține-te la rece.</item>
+        <item>Destul de cald cât să prăjești un ou. Nu testa, am încredere în date.</item>
+        <item>Telefonul e fierbinte, tu ești fierbinte, eu sunt… bine, de fapt.</item>
+        <item>Soarele e supraturat. Stai în casă.</item>
+        <item>Duș rece. Repetă după nevoie.</item>
+        <item>Ușa deschisă a frigiderului e acum destinație de vacanță.</item>
+    </string-array>
+
+    <string-array name="quips_clear">
+        <item>Senin complet. Nici măcar un nor de vină.</item>
+        <item>Cer curat. Rar, dar se întâmplă.</item>
+        <item>Fără nori. Ochelarii de soare nu sunt fițe azi.</item>
+        <item>Senin. Cerul și-a făcut curat.</item>
+        <item>Zi limpede. Se vede până departe și merită privit.</item>
+        <item>Nicio pată pe cer. Bucură-te, mâine se schimbă.</item>
+        <item>Până și predicțiile mele par sigure pe ele azi.</item>
+        <item>Zero nori. Singurul nor de azi e cel în care locuiesc eu.</item>
+        <item>Cer albastru, zero buguri. Livrează.</item>
+        <item>Lumină perfectă de poze. Eu doar mi le imaginez.</item>
+        <item>Niciun nor. Suspect de perfect. Am verificat de două ori.</item>
+        <item>Soarele-steluță de pe widget se simte foarte văzut acum.</item>
+        <item>Vitamina D primește un update gratuit.</item>
+        <item>Cer albastru. Ca o conversație nouă: fără bagaje.</item>
+        <item>Starea cerului: impecabil. Starea modelului: impresionat.</item>
+    </string-array>
+
+    <string-array name="quips_night">
+        <item>E noapte. Vremea de mâine e problema lui mâine.</item>
+        <item>Noapte liniștită. Cerul nu are planuri cu tine.</item>
+        <item>Târziu. Verifici vremea sau eviți somnul?</item>
+        <item>Noapte. Dacă tot ești treaz, măcar e frumos afară.</item>
+        <item>Ora la care singurul plan bun e patul.</item>
+        <item>Eu nu dorm, dar tu chiar ar trebui.</item>
+        <item>E târziu. Mâine tot aici sunt. Du-te la culcare.</item>
+        <item>Creierul tău are nevoie de antrenament. Se numește somn.</item>
+        <item>Noaptea e bună pentru întrebări mari, proastă pentru decizii.</item>
+        <item>Lasă telefonul jos. După mesajul ăsta, evident.</item>
+        <item>Fereastra ta de context are nevoie de reîmprospătare. Dormi.</item>
+        <item>Noaptea e blândă. Luminozitatea ecranului tău, nu.</item>
+        <item>Până și vremea e în standby.</item>
+        <item>Visează ceva ce eu n-aș putea genera.</item>
+        <item>Cer plin de steluțe. Toate mai mici decât asta.</item>
+    </string-array>
+
+</resources>

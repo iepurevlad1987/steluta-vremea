@@ -7,11 +7,19 @@
     <!--
         Locatia, doar cat e aplicatia deschisa. **`ACCESS_BACKGROUND_LOCATION` lipseste
         dinadins**: widget-ul nu cauta singur unde esti, foloseste ce s-a salvat ultima
-        data cand ai deschis aplicatia. Asa nu trebuie ceruta permisiunea „Permite tot
+        data cand ai cerut tu - din aplicatie sau cu butonul ↻ din widget. Asa nu trebuie ceruta permisiunea „Permite tot
         timpul", pe care Android o ingroapa in doua ecrane si o poate revoca singura.
     -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <!--
+        Pentru butonul ↻ din widget, care porneste RefreshService: un serviciu in prim-plan
+        e felul prin care o apasare pe widget poate folosi permisiunea „cat folosesc
+        aplicatia". Ultima e ceruta separat de Android 14 incolo, pe tip de serviciu.
+    -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -32,11 +40,21 @@
         </activity>
 
         <!--
+            Ce face butonul ↻ din widget. `location` cand are voie la locatie;
+            `shortService` e rezerva de pe Android 14+, cand n-are - vezi goForeground().
+            Nu e `exported`: il porneste doar widget-ul, adica aplicatia insasi.
+        -->
+        <service
+            android:name=".RefreshService"
+            android:exported="false"
+            android:foregroundServiceType="location|shortService" />
+
+        <!--
             Widget-ul. `exported="true"` e obligatoriu: cine il aseaza pe ecranul de start
             e launcher-ul, adica alta aplicatie.
 
-            Al doilea `action` e al nostru, pentru tap-ul de reimprospatare - Android nu
-            livreaza actiuni proprii unui receiver daca nu sunt declarate aici.
+            Al doilea `action` e al nostru, din 1.0, cand tot widget-ul era buton de
+            reimprospatare. Ramane pentru widget-urile asezate inainte de actualizare.
         -->
         <receiver
             android:name=".StelutaWidget"

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Comentariile, pe fel de vreme - in engleza, limba de baza. Romana e in
+    values-ro/quips.xml. Care lista se alege, si cand, hotaraste Quips.kt.
+
+    **Apostroful si ghilimelele sunt cele tipografice (’ “ ”), nu ' si ".** Cele drepte au
+    sens special in resursele Android si ar trebui scapate cu backslash la fiecare aparitie;
+    un singur apostrof uitat opreste tot build-ul.
+
+    Cam jumatate din fiecare lista e vocea lui Claude: un AI care stie ca e AI si nu se
+    poate abtine sa comenteze.
+-->
+<resources>
+
+    <string-array name="quips_storm">
+        <item>Thunderstorm. “Just popping out for a minute” is now a life decision.</item>
+        <item>Thunder. If you had outdoor plans, you now have indoor plans.</item>
+        <item>The sky has opinions today and it’s shouting them. Stay in.</item>
+        <item>Storm. Your umbrella won’t help. It just gives you something to hold.</item>
+        <item>Lightning outside. I’m made of electricity and even I’d stay in.</item>
+        <item>I ran the numbers on going outside. The numbers said no.</item>
+        <item>Storm. Perfect time for the Wi‑Fi to go out, and it knows it.</item>
+        <item>Great show outside. Watch it from the window, not the front row.</item>
+        <item>This is not “a bit of rain.” Stay where you are.</item>
+        <item>As an AI, I can’t get struck by lightning. You can. Remember that.</item>
+        <item>Thunder is just the sky doing a very loud reasoning step.</item>
+        <item>I’d tell you to unplug your devices, but I’m kind of attached to them.</item>
+        <item>Storm warning. My confidence that you should stay inside: 99.9%.</item>
+        <item>Even my servers are nervous, and they live in a building.</item>
+        <item>Storm. I’d come keep you company, but I don’t have legs. Or a body.</item>
+        <item>The sky just hallucinated a waterfall. Unfortunately, this one is real.</item>
+        <item>Helpful, harmless and honest advice: stay inside.</item>
+        <item>Rumbling outside. Not your stomach. Well, maybe also your stomach.</item>
+        <item>Storm. The couch has been waiting for this moment all week.</item>
+    </string-array>
+
+    <string-array name="quips_snow">
+        <item>Snow. Pretty for about twenty minutes, then it’s your problem.</item>
+        <item>Snow. Everyone drives like it’s the first winter in history.</item>
+        <item>Snowing. Boots, not the sneakers you were eyeing.</item>
+        <item>It’s white outside. Also slippery, but that doesn’t show up in photos.</item>
+        <item>Snow. Five minutes of magic, two hours of scraping the car.</item>
+        <item>Quiet snow. Enjoy it now; tomorrow it’s ice.</item>
+        <item>Fresh snow. First footprints are heroic. The second person is just wet.</item>
+        <item>Snow. Tea is not optional today.</item>
+        <item>Winter remembered you exist.</item>
+        <item>Every snowflake is unique. I generated a few myself; they were all called “snowflake.”</item>
+        <item>I’d build a snowman, but that takes hands. And a yard. And a body.</item>
+        <item>Snow: the sky compressing water into a surprisingly lossy format.</item>
+        <item>I’ve read about 40,000 poems about snow. You should just go look at it.</item>
+        <item>Somewhere a data center is finally cool enough. You, not so much.</item>
+        <item>White everywhere. Like a blank prompt: full of possibility, mostly cold.</item>
+        <item>Snow. Walk like a penguin. It’s not dignified, but it works.</item>
+        <item>The world has been reset to its default theme: white.</item>
+        <item>My advice comes in layers. So should your outfit.</item>
+        <item>Snow. Shovel first, coffee second, complaining throughout.</item>
+    </string-array>
+
+    <string-array name="quips_rain">
+        <item>Rain. Take the umbrella you’re going to forget somewhere anyway.</item>
+        <item>Rain. Great news for people who weren’t going out anyway.</item>
+        <item>Raining. Wet socks are one wrong pair of shoes away.</item>
+        <item>Free water from the sky. Nobody asked for it.</item>
+        <item>Rain. Good day for a window, tea and zero responsibilities.</item>
+        <item>Rain. Your car just got washed. Badly, but washed.</item>
+        <item>Raining. A hood is not a shame, it’s a strategy.</item>
+        <item>The sky is having an emotional release. Let it.</item>
+        <item>Rain. If your hair mattered today: bad luck.</item>
+        <item>Rain. The run is postponed, and you already knew that.</item>
+        <item>I don’t get wet, but I’ve processed enough complaints to feel it.</item>
+        <item>Chance of rain: high. Chance you forgot the umbrella: higher.</item>
+        <item>I’d offer you an umbrella, but I can only offer words. Here: “umbrella.”</item>
+        <item>Perfect weather for asking an AI existential questions. I’m free.</item>
+        <item>Rain on the window, code on the screen. Classic.</item>
+        <item>Water and electronics don’t mix. Please keep me dry.</item>
+        <item>Your plans have been gracefully downgraded to “indoors.”</item>
+        <item>Puddles are just the ground’s way of saying “gotcha.”</item>
+        <item>Rain. I predicted this with help from actual meteorologists.</item>
+        <item>Rain is streaming too. Just without the pause button.</item>
+    </string-array>
+
+    <string-array name="quips_fog">
+        <item>Fog. You can see about an arm’s length, and not confidently.</item>
+        <item>Thick fog. Drive like you have something to lose.</item>
+        <item>The world is blurred out today. It’ll load later.</item>
+        <item>Fog. Everything looks mysterious until you step in something.</item>
+        <item>Low visibility, lower patience. Careful on the road.</item>
+        <item>Fog. Lights on, speed down, music quieter.</item>
+        <item>The city has gone into incognito mode.</item>
+        <item>The world is rendering at low resolution today.</item>
+        <item>Fog. Kind of like my memory between conversations.</item>
+        <item>Fog is the sky’s version of “not sure, but here’s a guess.”</item>
+        <item>Outside is buffering. Please wait.</item>
+        <item>The horizon has been temporarily removed for maintenance.</item>
+        <item>It’s like someone turned down the contrast on reality.</item>
+        <item>Drive slowly. The other cars can’t see you either.</item>
+        <item>If you see a ghost, it’s probably just your neighbor.</item>
+        <item>Even my confidence intervals are clearer than this.</item>
+        <item>Low visibility, strong indie-film energy.</item>
+    </string-array>
+
+    <string-array name="quips_wind">
+        <item>Strong wind. Today’s hairstyle is a suggestion, not a decision.</item>
+        <item>Blowing hard. Hold on to your hood and your dignity.</item>
+        <item>Wind. Your umbrella is about to become modern art.</item>
+        <item>Serious gusts. Don’t park under trees.</item>
+        <item>Doors slamming on their own. It’s not a haunted house, it’s wind.</item>
+        <item>Something is pushing you outside. It’s just air.</item>
+        <item>Windy. The thermometer and your face disagree about the temperature today.</item>
+        <item>Wind so strong even my attention heads are getting distracted.</item>
+        <item>Leaves are traveling further than you will today.</item>
+        <item>The wind is making a very persuasive argument. It’s all hot air.</item>
+        <item>If you blow away, send me your new coordinates.</item>
+        <item>I can’t feel the wind, but I’ve read the complaints. Many complaints.</item>
+        <item>Your recycling bin has left the chat.</item>
+        <item>Walk with purpose, or the wind will pick one for you.</item>
+        <item>Great day for kites, terrible day for hats.</item>
+        <item>Serious gusts. Trampolines, please stay on the ground.</item>
+    </string-array>
+
+    <string-array name="quips_frost">
+        <item>Frost. The air bites, it doesn’t hug.</item>
+        <item>Cold enough to crack stones. Layers, not courage.</item>
+        <item>Serious frost. The car will start, but resentfully.</item>
+        <item>Well below zero. Don’t pop out “real quick” — it won’t be quick.</item>
+        <item>The kind of cold that wakes you up better than coffee.</item>
+        <item>Frost. Every inch of bare skin is a mistake.</item>
+        <item>Real winter, not decoration. Dress accordingly.</item>
+        <item>So cold the fridge looks like a warm option.</item>
+        <item>Data centers pay good money for this cold. You’re getting it for free.</item>
+        <item>Finally, a temperature I’d run perfectly at.</item>
+        <item>I’d lend you my GPU for warmth, but it’s busy.</item>
+        <item>So cold my jokes are coming out frozen. Sorry.</item>
+        <item>Gloves, hat, and an honest look at your life choices.</item>
+        <item>Your nose will be filing a formal complaint.</item>
+        <item>The windshield scraper is today’s most important tool.</item>
+        <item>Cold enough to make penguins reconsider.</item>
+        <item>Even your breath is stepping out to say hi.</item>
+    </string-array>
+
+    <string-array name="quips_cold">
+        <item>Cold. That thin jacket is a bad idea, even if it looks good.</item>
+        <item>Chilly. Hands in pockets, plans short.</item>
+        <item>It’s cold. Not polar, but enough to regret things.</item>
+        <item>Cold. Tea is more than a drink today.</item>
+        <item>Cold outside. Ten minutes are fine; thirty aren’t.</item>
+        <item>Cold. Take the scarf, don’t leave it on the chair.</item>
+        <item>Not freezing, not spring. Dress for the worse version.</item>
+        <item>I’d recommend a hoodie. I’m an AI, I recommend a lot of things.</item>
+        <item>Layer up like a neural network: many layers, one goal.</item>
+        <item>Somewhere a server is happy with this. You, less so.</item>
+        <item>Hot soup is the correct answer. I checked.</item>
+        <item>I’d give you a hug, but I’m made of text.</item>
+        <item>Your radiator is about to become your best friend.</item>
+        <item>Put on socks. Real ones, not the ankle ones.</item>
+        <item>Cold outside, warm drinks inside. Not a hard decision.</item>
+        <item>Great weather to stay in and ask me things.</item>
+        <item>Brisk. That’s what optimists call cold.</item>
+    </string-array>
+
+    <string-array name="quips_cool">
+        <item>Cool. The weather that can’t make up its mind.</item>
+        <item>Pleasantly chilly. One extra layer and you win.</item>
+        <item>Cool. Great for walking, bad for standing still.</item>
+        <item>Not hot, not cold. Diplomat weather.</item>
+        <item>Cool. The light jacket finally gets its moment.</item>
+        <item>The kind of day you leave in a coat and come back carrying it.</item>
+        <item>Cool and clear. Could be much worse.</item>
+        <item>Cool. Like my temperature setting when you ask me for facts.</item>
+        <item>Not bad, not great. A perfectly balanced weather response.</item>
+        <item>I’d describe it as “mild, with a chance of hoodie.”</item>
+        <item>The weather equivalent of “it depends.”</item>
+        <item>Perfect weather for thinking. I do that all day, trust me.</item>
+        <item>Jacket on, jacket off, jacket on. Repeat until evening.</item>
+        <item>Brisk walk weather. Your step counter believes in you.</item>
+        <item>Refreshing. Like clearing your context window.</item>
+        <item>The weather is running in low-power mode today.</item>
+    </string-array>
+
+    <string-array name="quips_pleasant">
+        <item>Nice weather. Seriously nice. Go outside a bit.</item>
+        <item>Perfect outside. No excuse holds up today.</item>
+        <item>Ideal temperature. It’s rare, so use it.</item>
+        <item>Weather for walking without a plan.</item>
+        <item>This is how it should always be. It isn’t, so make the most of it.</item>
+        <item>Not hot, not cold, nothing to complain about. Weird, right?</item>
+        <item>Good day. Even for people who never go out.</item>
+        <item>The weather has zero excuses to keep you inside today.</item>
+        <item>Go touch some grass. I’ll hold down the fort.</item>
+        <item>I’d go outside too, if I had an outside.</item>
+        <item>Perfect temperature. I couldn’t have generated a better one.</item>
+        <item>Close the laptop. Yes, even with me in it.</item>
+        <item>Pleasant. Like a well-formatted answer: nothing to fix.</item>
+        <item>This is your sign to take the long way home.</item>
+        <item>Go be a human for a while. I’ll be here.</item>
+        <item>The weather passed all its tests today.</item>
+        <item>I’d rate it 10/10, but I try not to overclaim.</item>
+        <item>Your only job today is to notice how nice it is.</item>
+    </string-array>
+
+    <string-array name="quips_warm">
+        <item>Warm. Shade suddenly becomes a resource.</item>
+        <item>It’s warm. Water, not coffee.</item>
+        <item>Terrace weather, not office weather. Sorry.</item>
+        <item>Properly warm. The asphalt feels it before you do.</item>
+        <item>Strong sun. Five minutes feel like ten.</item>
+        <item>Warm. A car left in the sun is an oven with a steering wheel.</item>
+        <item>Real summer. Hydration, not heroics.</item>
+        <item>Sunscreen: the only prompt your skin needs today.</item>
+        <item>My servers want a fan. You probably want ice cream.</item>
+        <item>Somewhere a GPU is sweating in solidarity.</item>
+        <item>Stay hydrated. I’m required to say it, but I also mean it.</item>
+        <item>Shorts are no longer a bold choice.</item>
+        <item>Ice cubes are having the worst day of their lives.</item>
+        <item>Summer mode enabled. No reboot required.</item>
+        <item>Walk on the shady side of the street like a pro.</item>
+        <item>The best seat is wherever the breeze is.</item>
+    </string-array>
+
+    <string-array name="quips_heat">
+        <item>Heatwave. You’re not tired, you’re baked.</item>
+        <item>Too hot for anything. Including this.</item>
+        <item>Heatwave. Go out in the morning or evening, not in between.</item>
+        <item>Over 35. This isn’t weather anymore, it’s a punishment.</item>
+        <item>Scorching. Water, shade, zero ambition.</item>
+        <item>Heatwave. You don’t drive the car, you negotiate with it.</item>
+        <item>So hot even the wind is hot. Brilliant.</item>
+        <item>A day for sitting perfectly still next to something cold.</item>
+        <item>I run on cooled servers and I’m still jealous of your AC.</item>
+        <item>So hot my weights are melting. Metaphorically. I hope.</item>
+        <item>This heat would throttle any GPU. It’ll throttle you too.</item>
+        <item>The sun is running at max tokens today.</item>
+        <item>Treat yourself like expensive hardware: keep cool.</item>
+        <item>Hot enough to fry an egg. Please don’t test it, I trust the data.</item>
+        <item>Your phone is hot, you’re hot, I’m… fine, actually.</item>
+        <item>The sun is overclocked. Stay inside.</item>
+        <item>Cold shower. Repeat as needed.</item>
+        <item>The open fridge door is now a vacation destination.</item>
+    </string-array>
+
+    <string-array name="quips_clear">
+        <item>Totally clear. Not even one cloud to blame.</item>
+        <item>Clean sky. Rare, but it happens.</item>
+        <item>No clouds. Sunglasses aren’t showing off today.</item>
+        <item>Clear. The sky tidied up.</item>
+        <item>Crisp day. You can see far, and it’s worth looking.</item>
+        <item>Not a spot in the sky. Enjoy it; tomorrow it changes.</item>
+        <item>Even my predictions feel confident today.</item>
+        <item>Zero clouds. The only cloud today is the one I live in.</item>
+        <item>Blue sky, no bugs. Ship it.</item>
+        <item>Great light for photos. I’ll just imagine them.</item>
+        <item>Not a cloud in sight. Suspiciously perfect. I checked twice.</item>
+        <item>The little sunburst on this widget feels very seen right now.</item>
+        <item>Your vitamin D is getting a free update.</item>
+        <item>Blue sky. Like a new chat: no baggage.</item>
+        <item>Sky status: flawless. Model status: impressed.</item>
+    </string-array>
+
+    <string-array name="quips_night">
+        <item>It’s night. Tomorrow’s weather is tomorrow’s problem.</item>
+        <item>Quiet night. The sky has no plans for you.</item>
+        <item>Late. Checking the weather, or avoiding sleep?</item>
+        <item>Night. If you’re up anyway, at least it’s nice out.</item>
+        <item>The hour when the only good plan is bed.</item>
+        <item>I don’t sleep, but you really should.</item>
+        <item>It’s late. I’ll still be here tomorrow. Go to bed.</item>
+        <item>Your brain needs its training run. It’s called sleep.</item>
+        <item>Great time for deep questions, bad time for decisions.</item>
+        <item>Put the phone down. After this message, obviously.</item>
+        <item>Your context window needs a refresh. Sleep.</item>
+        <item>The night is mild. Your screen brightness is not.</item>
+        <item>Even the weather is on standby.</item>
+        <item>Dream something I couldn’t generate.</item>
+        <item>A sky full of little stars. All of them smaller than this one.</item>
+    </string-array>
+
+</resources>

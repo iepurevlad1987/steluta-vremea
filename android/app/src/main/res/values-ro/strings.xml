@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Textele pentru un telefon setat pe romana. Restul lumii primeste values/strings.xml. -->
+<resources>
+    <string name="widget_label">Steluța — vremea</string>
+    <string name="widget_description">Vremea de azi și zilele următoare.</string>
+    <string name="loading">se încarcă…</string>
+    <string name="refresh">Reîmprospătează</string>
+    <string name="refresh_cd">Reîmprospătează vremea, locul și mesajul</string>
+    <string name="no_data">Fără date. Verifică internetul.</string>
+    <string name="icon_cd">Starea vremii</string>
+    <string name="widget_hint">Ca să pui widget-ul: ține apăsat pe ecranul de start → Widget-uri → Steluța. Butonul mic ↻ află unde ești, aduce vremea și alege alt mesaj.</string>
+    <string name="stat_min">min</string>
+    <string name="stat_max">max</string>
+    <string name="stat_wind">vânt</string>
+    <string name="next_days">Zilele următoare</string>
+    <string name="use_my_location">Locația mea</string>
+    <string name="locating">Se caută…</string>
+    <string name="location_denied">Fără permisiune de localizare rămâne locul dinainte.</string>
+    <string name="location_failed">N-am găsit locația. Verifică dacă GPS-ul e pornit.</string>
+    <string name="location_found">Acum arăt vremea din %1$s.</string>
+    <string name="feels_like">se simte ca %1$d°</string>
+    <string name="updated_cached">date salvate, de la %1$s</string>
+    <string name="updated_fresh">actualizat la %1$s</string>
+    <string name="today">Azi</string>
+    <string name="notif_channel">Reîmprospătarea widget-ului</string>
+    <string name="notif_refreshing">Mă uit la cer și caut unde ești…</string>
+
+    <string name="wmo_clear">senin</string>
+    <string name="wmo_mostly_clear">aproape senin</string>
+    <string name="wmo_partly">parțial noros</string>
+    <string name="wmo_cloudy">înnorat</string>
+    <string name="wmo_fog">ceață</string>
+    <string name="wmo_rime_fog">ceață cu chiciură</string>
+    <string name="wmo_drizzle_light">burniță slabă</string>
+    <string name="wmo_drizzle">burniță</string>
+    <string name="wmo_drizzle_dense">burniță deasă</string>
+    <string name="wmo_drizzle_freezing">burniță înghețată</string>
+    <string name="wmo_rain_light">ploaie slabă</string>
+    <string name="wmo_rain">ploaie</string>
+    <string name="wmo_rain_heavy">ploaie torențială</string>
+    <string name="wmo_rain_freezing">ploaie înghețată</string>
+    <string name="wmo_snow_light">ninsoare slabă</string>
+    <string name="wmo_snow">ninsoare</string>
+    <string name="wmo_snow_heavy">ninsoare abundentă</string>
+    <string name="wmo_snow_grains">măzăriche</string>
+    <string name="wmo_showers_light">averse slabe</string>
+    <string name="wmo_showers">averse</string>
+    <string name="wmo_showers_heavy">averse puternice</string>
+    <string name="wmo_snow_showers">averse de zăpadă</string>
+    <string name="wmo_storm">furtună</string>
+    <string name="wmo_storm_hail">furtună cu grindină</string>
+</resources>

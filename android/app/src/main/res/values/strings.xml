@@ -1,21 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Engleza e limba de baza: orice telefon a carui limba nu are folderul ei (values-ro, ...)
+    primeste textele de aici. Romana e in values-ro/strings.xml.
+-->
 <resources>
-    <string name="app_name">Steluța</string>
-    <string name="widget_label">Steluța — vremea</string>
-    <string name="widget_description">Vremea de azi și zilele următoare.</string>
-    <string name="loading">se încarcă…</string>
-    <string name="tap_to_refresh">Apasă pe widget ca să reîmprospătezi.</string>
-    <string name="refresh">Reîmprospătează</string>
-    <string name="no_data">Fără date. Verifică internetul.</string>
-    <string name="icon_cd">Starea vremii</string>
-    <string name="widget_hint">Ca să pui widget-ul: ține apăsat pe ecranul de start → Widget-uri → Steluța. Un tap pe el aduce date noi.</string>
+    <string name="app_name" translatable="false">Steluța</string>
+    <string name="widget_label">Steluța — weather</string>
+    <string name="widget_description">Today’s weather and the next few days.</string>
+    <string name="loading">loading…</string>
+    <string name="refresh">Refresh</string>
+    <string name="refresh_cd">Refresh weather, location and message</string>
+    <string name="no_data">No data. Check your internet connection.</string>
+    <string name="icon_cd">Weather conditions</string>
+    <string name="widget_hint">To add the widget: long-press the home screen → Widgets → Steluța. The small ↻ button finds where you are, fetches the weather and picks a new message.</string>
     <string name="stat_min">min</string>
     <string name="stat_max">max</string>
-    <string name="stat_wind">vânt</string>
-    <string name="next_days">Zilele următoare</string>
-    <string name="use_my_location">Locația mea</string>
-    <string name="locating">Se caută…</string>
-    <string name="location_denied">Fără permisiune de localizare rămâne locul dinainte.</string>
-    <string name="location_failed">N-am găsit locația. Verifică dacă GPS-ul e pornit.</string>
-    <string name="location_found">Acum arăt vremea din %1$s.</string>
+    <string name="stat_wind">wind</string>
+    <string name="next_days">Next days</string>
+    <string name="use_my_location">My location</string>
+    <string name="locating">Locating…</string>
+    <string name="location_denied">Without location permission, the previous place stays.</string>
+    <string name="location_failed">Couldn’t find your location. Check that location is on.</string>
+    <string name="location_found">Now showing the weather in %1$s.</string>
+    <string name="feels_like">feels like %1$d°</string>
+    <string name="updated_cached">saved data, from %1$s</string>
+    <string name="updated_fresh">updated at %1$s</string>
+    <string name="today">Today</string>
+    <string name="notif_channel">Widget refresh</string>
+    <string name="notif_refreshing">Checking the sky and where you are…</string>
+
+    <!-- Codurile WMO de la Open-Meteo. Vezi Wmo in Weather.kt. -->
+    <string name="wmo_clear">clear</string>
+    <string name="wmo_mostly_clear">mostly clear</string>
+    <string name="wmo_partly">partly cloudy</string>
+    <string name="wmo_cloudy">overcast</string>
+    <string name="wmo_fog">fog</string>
+    <string name="wmo_rime_fog">freezing fog</string>
+    <string name="wmo_drizzle_light">light drizzle</string>
+    <string name="wmo_drizzle">drizzle</string>
+    <string name="wmo_drizzle_dense">dense drizzle</string>
+    <string name="wmo_drizzle_freezing">freezing drizzle</string>
+    <string name="wmo_rain_light">light rain</string>
+    <string name="wmo_rain">rain</string>
+    <string name="wmo_rain_heavy">heavy rain</string>
+    <string name="wmo_rain_freezing">freezing rain</string>
+    <string name="wmo_snow_light">light snow</string>
+    <string name="wmo_snow">snow</string>
+    <string name="wmo_snow_heavy">heavy snow</string>
+    <string name="wmo_snow_grains">snow grains</string>
+    <string name="wmo_showers_light">light showers</string>
+    <string name="wmo_showers">showers</string>
+    <string name="wmo_showers_heavy">heavy showers</string>
+    <string name="wmo_snow_showers">snow showers</string>
+    <string name="wmo_storm">thunderstorm</string>
+    <string name="wmo_storm_hail">thunderstorm with hail</string>
 </resources>

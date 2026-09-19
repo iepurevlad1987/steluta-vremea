@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Trei puncte in locul sagetii, cat lucreaza butonul. Un widget nu poate roti o iconita
+    (RemoteViews nu are animatii), deci semnul de „am auzit" e schimbarea desenului.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="@color/accent"
+        android:pathData="M4,12a2.2,2.2 0 1,0 4.4,0a2.2,2.2 0 1,0 -4.4,0zM9.8,12a2.2,2.2 0 1,0 4.4,0a2.2,2.2 0 1,0 -4.4,0zM15.6,12a2.2,2.2 0 1,0 4.4,0a2.2,2.2 0 1,0 -4.4,0z" />
+</vector>

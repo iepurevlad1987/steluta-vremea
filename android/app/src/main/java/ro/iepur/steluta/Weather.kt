@@ -1,5 +1,7 @@
 package ro.iepur.steluta
 
+import android.content.Context
+
 /** Ce fel de iconita se deseneaza. Nu e acelasi lucru cu textul afisat. */
 enum class Kind { CLEAR, PARTLY, CLOUDY, FOG, DRIZZLE, RAIN, SNOW, STORM }
 
@@ -35,44 +37,46 @@ data class Weather(
 /**
  * Codurile WMO, asa cum le da Open-Meteo.
  *
- * Ce nu e in tabel cade pe „innorat", care nu minte niciodata prea tare.
+ * Ce nu e in tabel cade pe „innorat", care nu minte niciodata prea tare. Textele sunt
+ * resurse (`wmo_*` din strings.xml), ca sa vina in limba telefonului.
  */
 object Wmo {
 
-    private val TABLE: Map<Int, Pair<Kind, String>> = mapOf(
-        0 to (Kind.CLEAR to "senin"),
-        1 to (Kind.CLEAR to "aproape senin"),
-        2 to (Kind.PARTLY to "parțial noros"),
-        3 to (Kind.CLOUDY to "înnorat"),
-        45 to (Kind.FOG to "ceață"),
-        48 to (Kind.FOG to "ceață cu chiciură"),
-        51 to (Kind.DRIZZLE to "burniță slabă"),
-        53 to (Kind.DRIZZLE to "burniță"),
-        55 to (Kind.DRIZZLE to "burniță deasă"),
-        56 to (Kind.DRIZZLE to "burniță înghețată"),
-        57 to (Kind.DRIZZLE to "burniță înghețată"),
-        61 to (Kind.RAIN to "ploaie slabă"),
-        63 to (Kind.RAIN to "ploaie"),
-        65 to (Kind.RAIN to "ploaie torențială"),
-        66 to (Kind.RAIN to "ploaie înghețată"),
-        67 to (Kind.RAIN to "ploaie înghețată"),
-        71 to (Kind.SNOW to "ninsoare slabă"),
-        73 to (Kind.SNOW to "ninsoare"),
-        75 to (Kind.SNOW to "ninsoare abundentă"),
-        77 to (Kind.SNOW to "măzăriche"),
-        80 to (Kind.RAIN to "averse slabe"),
-        81 to (Kind.RAIN to "averse"),
-        82 to (Kind.RAIN to "averse puternice"),
-        85 to (Kind.SNOW to "averse de zăpadă"),
-        86 to (Kind.SNOW to "averse de zăpadă"),
-        95 to (Kind.STORM to "furtună"),
-        96 to (Kind.STORM to "furtună cu grindină"),
-        99 to (Kind.STORM to "furtună cu grindină"),
+    private val TABLE: Map<Int, Pair<Kind, Int>> = mapOf(
+        0 to (Kind.CLEAR to R.string.wmo_clear),
+        1 to (Kind.CLEAR to R.string.wmo_mostly_clear),
+        2 to (Kind.PARTLY to R.string.wmo_partly),
+        3 to (Kind.CLOUDY to R.string.wmo_cloudy),
+        45 to (Kind.FOG to R.string.wmo_fog),
+        48 to (Kind.FOG to R.string.wmo_rime_fog),
+        51 to (Kind.DRIZZLE to R.string.wmo_drizzle_light),
+        53 to (Kind.DRIZZLE to R.string.wmo_drizzle),
+        55 to (Kind.DRIZZLE to R.string.wmo_drizzle_dense),
+        56 to (Kind.DRIZZLE to R.string.wmo_drizzle_freezing),
+        57 to (Kind.DRIZZLE to R.string.wmo_drizzle_freezing),
+        61 to (Kind.RAIN to R.string.wmo_rain_light),
+        63 to (Kind.RAIN to R.string.wmo_rain),
+        65 to (Kind.RAIN to R.string.wmo_rain_heavy),
+        66 to (Kind.RAIN to R.string.wmo_rain_freezing),
+        67 to (Kind.RAIN to R.string.wmo_rain_freezing),
+        71 to (Kind.SNOW to R.string.wmo_snow_light),
+        73 to (Kind.SNOW to R.string.wmo_snow),
+        75 to (Kind.SNOW to R.string.wmo_snow_heavy),
+        77 to (Kind.SNOW to R.string.wmo_snow_grains),
+        80 to (Kind.RAIN to R.string.wmo_showers_light),
+        81 to (Kind.RAIN to R.string.wmo_showers),
+        82 to (Kind.RAIN to R.string.wmo_showers_heavy),
+        85 to (Kind.SNOW to R.string.wmo_snow_showers),
+        86 to (Kind.SNOW to R.string.wmo_snow_showers),
+        95 to (Kind.STORM to R.string.wmo_storm),
+        96 to (Kind.STORM to R.string.wmo_storm_hail),
+        99 to (Kind.STORM to R.string.wmo_storm_hail),
     )
 
     fun kindOf(code: Int): Kind = TABLE[code]?.first ?: Kind.CLOUDY
 
-    fun labelOf(code: Int): String = TABLE[code]?.second ?: "înnorat"
+    fun labelOf(context: Context, code: Int): String =
+        context.getString(TABLE[code]?.second ?: R.string.wmo_cloudy)
 
     /**
      * Ce desen se pune pentru codul dat.

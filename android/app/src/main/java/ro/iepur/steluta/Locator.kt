@@ -8,6 +8,7 @@ import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Looper
+import android.os.SystemClock
 import android.util.Log
 import java.util.Locale
 
@@ -22,8 +23,16 @@ private const val TAG = "StelutaLocator"
  */
 object Locator {
 
-    /** Cat asteptam o pozitie noua cand nu exista niciuna salvata de sistem. */
+    /** Cat asteptam o pozitie noua cand sistemul n-are una destul de proaspata. */
     private const val WAIT_MS = 15_000L
+
+    /**
+     * Cat de veche poate fi pozitia stiuta de sistem ca s-o luam drept „acum".
+     *
+     * Butonul promite locatia **actuala**. O pozitie de ieri, din alt oras, ar fi exact
+     * minciuna pe care omul a apasat butonul ca s-o evite.
+     */
+    private const val FRESH_MS = 2 * 60_000L
 
     fun hasPermission(context: Context): Boolean =
         context.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) ==
@@ -34,10 +43,11 @@ object Locator {
     /**
      * Cauta locul curent. **Blocheaza** - se cheama de pe un fir de fundal.
      *
-     * Intai incearca ultima pozitie stiuta de sistem, care e instantanee si de obicei
-     * destul de proaspata. Doar daca nu exista niciuna cere una noua, si atunci asteapta
-     * cel mult [WAIT_MS] - un buton care se invarte la nesfarsit fiindca telefonul e
-     * intr-o pivnita fara semnal e mai rau decat unul care spune ca n-a reusit.
+     * Intai incearca ultima pozitie stiuta de sistem, care e instantanee - dar doar daca
+     * e mai noua de [FRESH_MS]. Altfel cere una noua si asteapta cel mult [WAIT_MS]: un
+     * buton care se invarte la nesfarsit fiindca telefonul e intr-o pivnita fara semnal e
+     * mai rau decat unul care spune ca n-a reusit. Daca nici asa nu vine nimic, se ia
+     * totusi pozitia veche: ea tot e mai aproape de adevar decat locul salvat.
      */
     fun find(context: Context): Spot? {
         if (!hasPermission(context)) return null
@@ -46,7 +56,8 @@ object Locator {
             ?: return null
 
         val known = lastKnown(lm)
-        val location = known ?: requestOne(lm) ?: return null
+        val fresh = known?.takeIf { ageMs(it) <= FRESH_MS }
+        val location = fresh ?: requestOne(lm) ?: known ?: return null
 
         return Spot(
             lat = round4(location.latitude),
@@ -65,11 +76,18 @@ object Locator {
     private fun lastKnown(lm: LocationManager): Location? = try {
         lm.getProviders(true)
             .mapNotNull { p -> runCatching { lm.getLastKnownLocation(p) }.getOrNull() }
-            .maxByOrNull { it.time }
+            .minByOrNull { ageMs(it) }
     } catch (e: SecurityException) {
         Log.w(TAG, "Permisiunea a fost retrasă între timp", e)
         null
     }
+
+    /**
+     * Varsta pozitiei, pe ceasul de la pornirea telefonului - nu pe `Location.time`, care
+     * e ora de pe perete si sare cand se schimba fusul sau cand ceasul se sincronizeaza.
+     */
+    private fun ageMs(l: Location): Long =
+        (SystemClock.elapsedRealtimeNanos() - l.elapsedRealtimeNanos) / 1_000_000L
 
     /** O singura pozitie noua, cu asteptare marginita. */
     private fun requestOne(lm: LocationManager): Location? {
@@ -104,6 +122,10 @@ object Locator {
                 if (result == null) lock.wait(WAIT_MS)
                 result
             }
+        } catch (e: SecurityException) {
+            // Permisiunea verificata in find() poate fi retrasa intre timp, din setari.
+            Log.w(TAG, "Permisiunea a fost retrasă între timp", e)
+            null
         } catch (e: Exception) {
             Log.w(TAG, "Nu s-a putut cere poziția", e)
             null
@@ -125,7 +147,9 @@ object Locator {
 
         return try {
             @Suppress("DEPRECATION")
-            val hit = Geocoder(context, Locale.forLanguageTag("ro-RO"))
+            // In limba telefonului: „Munich" pentru cine citeste in engleza, „München"
+            // pentru cine citeste in germana.
+            val hit = Geocoder(context, Locale.getDefault())
                 .getFromLocation(lat, lon, 1)
                 ?.firstOrNull()
                 ?: return fallback
