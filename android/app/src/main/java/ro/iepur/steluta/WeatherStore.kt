@@ -35,6 +35,18 @@ object WeatherStore {
             )
         }
 
+        val hours = JSONArray()
+        w.hours.forEach { h ->
+            hours.put(
+                JSONObject()
+                    .put("epoch", h.epoch)
+                    .put("label", h.label)
+                    .put("code", h.code)
+                    .put("temp", h.temp)
+                    .put("isDay", h.isDay)
+            )
+        }
+
         val json = JSONObject()
             .put("place", w.place)
             .put("temp", w.temp)
@@ -46,6 +58,7 @@ object WeatherStore {
             .put("max", w.max)
             .put("at", w.at)
             .put("days", days)
+            .put("hours", hours)
 
         prefs(context).edit().putString(KEY, json.toString()).apply()
     }
@@ -59,8 +72,15 @@ object WeatherStore {
                 val d = arr.getJSONObject(i)
                 Day(d.getString("iso"), d.getInt("code"), d.getInt("min"), d.getInt("max"))
             }
+            // `opt`, nu `get`: vremea salvata de 1.1.0 n-are ore, si nu e motiv s-o aruncam.
+            val hArr = o.optJSONArray("hours")
+            val hours = if (hArr == null) emptyList() else (0 until hArr.length()).map { i ->
+                val h = hArr.getJSONObject(i)
+                Hour(h.getLong("epoch"), h.getString("label"), h.getInt("code"), h.getInt("temp"), h.getBoolean("isDay"))
+            }
             Weather(
                 place = o.getString("place"),
+                hours = hours,
                 temp = o.getInt("temp"),
                 feels = o.getInt("feels"),
                 code = o.getInt("code"),

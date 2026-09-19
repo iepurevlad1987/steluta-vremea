@@ -14,6 +14,20 @@ data class Day(
     val max: Int,
 )
 
+/** O ora din prognoza, pentru randul de jos cand widget-ul e pe „ore". */
+data class Hour(
+    /**
+     * Momentul, in milisecunde. Dupa el se alege ce ore mai sunt „de acum incolo" - nu dupa
+     * [label], care e ora locului, nu a telefonului.
+     */
+    val epoch: Long,
+    /** Ora asa cum se scrie pe widget, `14:00`: ora locului pentru care e vremea. */
+    val label: String,
+    val code: Int,
+    val temp: Int,
+    val isDay: Boolean,
+)
+
 /**
  * Vremea, gata de pus pe ecran.
  *
@@ -30,6 +44,8 @@ data class Weather(
     val min: Int,
     val max: Int,
     val days: List<Day>,
+    /** Urmatoarele ~30 de ore. Goala la vremea salvata de versiunea 1.1.0. */
+    val hours: List<Hour> = emptyList(),
     /** Cand a fost adus raspunsul. Ecranul spune „de la HH:mm" pe baza lui. */
     val at: Long,
 )

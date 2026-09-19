@@ -4,6 +4,8 @@ import android.util.Log
 import org.json.JSONObject
 import java.net.HttpURLConnection
 import java.net.URL
+import java.time.LocalDateTime
+import java.time.ZoneOffset
 import kotlin.math.roundToInt
 
 private const val TAG = "StelutaApi"
@@ -41,8 +43,11 @@ object WeatherApi {
         val url = URL(
             "$URL_BASE?latitude=${spot.lat}&longitude=${spot.lon}" +
                 "&current=temperature_2m,apparent_temperature,is_day,weather_code,wind_speed_10m" +
+                "&hourly=temperature_2m,weather_code,is_day" +
                 "&daily=weather_code,temperature_2m_max,temperature_2m_min" +
-                "&timezone=auto&forecast_days=6"
+                // `forecast_hours` taie orele la cate ne trebuie, incepand cu ora curenta;
+                // fara el ar veni sase zile intregi, adica 144 de ore din care folosim cinci.
+                "&timezone=auto&forecast_days=6&forecast_hours=30"
         )
 
         var conn: HttpURLConnection? = null
@@ -90,6 +95,7 @@ object WeatherApi {
 
         Weather(
             place = placeName,
+            hours = parseHours(root),
             temp = cur.getDouble("temperature_2m").roundToInt(),
             feels = cur.getDouble("apparent_temperature").roundToInt(),
             code = cur.getInt("weather_code"),
@@ -103,5 +109,36 @@ object WeatherApi {
     } catch (e: Exception) {
         Log.w(TAG, "Răspuns pe care nu-l pot citi", e)
         null
+    }
+
+    /**
+     * Orele, din `hourly`.
+     *
+     * Open-Meteo le da ca ora locului (`2026-09-19T14:00`, fara fus), iar `utc_offset_seconds`
+     * spune cat e de departe de UTC. Din amandoua iese momentul exact, care nu depinde de
+     * fusul telefonului. Daca lipsesc - raspuns vechi, cache - lista e goala si randul de
+     * jos ramane gol pana la urmatoarea reimprospatare, nu crapa.
+     */
+    private fun parseHours(root: JSONObject): List<Hour> = try {
+        val hourly = root.getJSONObject("hourly")
+        val offset = root.optLong("utc_offset_seconds", 0L)
+        val times = hourly.getJSONArray("time")
+        val temps = hourly.getJSONArray("temperature_2m")
+        val codes = hourly.getJSONArray("weather_code")
+        val days = hourly.getJSONArray("is_day")
+
+        (0 until times.length()).map { i ->
+            val iso = times.getString(i)
+            Hour(
+                epoch = (LocalDateTime.parse(iso).toEpochSecond(ZoneOffset.UTC) - offset) * 1000L,
+                label = iso.substringAfter('T').take(5),
+                code = codes.getInt(i),
+                temp = temps.getDouble(i).roundToInt(),
+                isDay = days.getInt(i) == 1,
+            )
+        }
+    } catch (e: Exception) {
+        Log.w(TAG, "Fără ore în răspuns", e)
+        emptyList()
     }
 }

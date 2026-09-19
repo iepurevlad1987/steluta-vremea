@@ -20,6 +20,17 @@ import java.util.Locale
  */
 private const val ACTION_REFRESH = "ro.iepur.steluta.REFRESH"
 
+/** Butonul „ore ⇄ / zile ⇄". Declarata si in manifest. */
+private const val ACTION_TOGGLE = "ro.iepur.steluta.TOGGLE_MODE"
+
+private const val PREFS = "steluta"
+
+/** `true` = randul de jos arata ore; lipsa sau `false` = zile, ca inainte. */
+private const val SHOW_HOURS = "widget_show_hours"
+
+/** Din cate in cate ore se ia o coloana: cinci coloane acopera astfel 13 ore. */
+private const val HOUR_STEP = 3
+
 /**
  * Widget-ul de pe ecranul de start.
  *
@@ -28,9 +39,12 @@ private const val ACTION_REFRESH = "ro.iepur.steluta.REFRESH"
  * de start; apoi, cand raspunde reteaua, cu cifrele noi. Un widget care se goleste cat
  * asteapta e mai rau decat unul care arata vremea de acum zece minute.
  *
- * Doua locuri de apasat:
+ * Trei locuri de apasat:
  * - **butonul mic ↻** de langa comentariu: locatia de acum, vremea de acolo si alt
  *   comentariu - toate trei, prin [RefreshService];
+ * - **„ore ⇄ / zile ⇄"**, deasupra randului de jos: il comuta intre urmatoarele cinci zile
+ *   si urmatoarele ore, din trei in trei. Orele vin in acelasi apel cu restul vremii,
+ *   deci comutarea nu asteapta dupa retea;
  * - **restul widget-ului** deschide aplicatia.
  *
  * In rest, Android il reimprospateaza singur o data la 30 de minute (minimul pe care il
@@ -52,7 +66,15 @@ class StelutaWidget : AppWidgetProvider() {
 
     override fun onReceive(context: Context, intent: Intent) {
         super.onReceive(context, intent)
-        if (intent.action == ACTION_REFRESH) refreshInBackground(context)
+        when (intent.action) {
+            ACTION_REFRESH -> refreshInBackground(context)
+            ACTION_TOGGLE -> {
+                val p = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+                // `commit`, nu `apply`: redesenarea de pe randul urmator citeste valoarea.
+                p.edit().putBoolean(SHOW_HOURS, !p.getBoolean(SHOW_HOURS, false)).commit()
+                redrawAll(context)
+            }
+        }
     }
 
     /**
@@ -114,7 +136,20 @@ class StelutaWidget : AppWidgetProvider() {
             val v = RemoteViews(context.packageName, R.layout.widget)
             v.setOnClickPendingIntent(R.id.widget_root, openAppIntent(context))
             v.setOnClickPendingIntent(R.id.refresh, refreshIntent(context))
+            v.setOnClickPendingIntent(R.id.mode_toggle, toggleIntent(context))
             v.setImageViewResource(R.id.refresh, R.drawable.ic_refresh)
+
+            val hoursMode = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+                .getBoolean(SHOW_HOURS, false)
+            // Butonul scrie unde duce, titlul scrie unde esti.
+            v.setTextViewText(
+                R.id.bottom_title,
+                context.getString(if (hoursMode) R.string.next_hours else R.string.next_days),
+            )
+            v.setTextViewText(
+                R.id.mode_toggle,
+                context.getString(if (hoursMode) R.string.show_days else R.string.show_hours),
+            )
             if (w == null) return v
 
             // Limba telefonului, citita acum si nu tinuta intr-o constanta: daca omul
@@ -132,30 +167,62 @@ class StelutaWidget : AppWidgetProvider() {
             v.setTextViewText(R.id.quip, Quips.forWeather(context, w))
             v.setImageViewResource(R.id.icon, Wmo.iconOf(w.code, w.isDay))
 
-            // Randul de jos incepe de maine: ziua de azi e deja sus, cu cifra ei mare.
-            val next = w.days.drop(1).take(5)
             val nameIds = intArrayOf(R.id.day0_name, R.id.day1_name, R.id.day2_name, R.id.day3_name, R.id.day4_name)
             val iconIds = intArrayOf(R.id.day0_icon, R.id.day1_icon, R.id.day2_icon, R.id.day3_icon, R.id.day4_icon)
             val tempIds = intArrayOf(R.id.day0_temps, R.id.day1_temps, R.id.day2_temps, R.id.day3_temps, R.id.day4_temps)
 
+            // Aceleasi cinci coloane pentru ambele moduri: doar ce se scrie in ele difera.
+            val cells: List<Triple<String, Int, String>> = if (hoursMode) {
+                nextHours(w.hours).map { h ->
+                    // Orele au iconita lor de zi sau de noapte: la 23:00 senin e luna.
+                    Triple(h.label, Wmo.iconOf(h.code, h.isDay), "${h.temp}°")
+                }
+            } else {
+                // Randul de jos incepe de maine: ziua de azi e deja sus, cu cifra ei mare.
+                // Zilele intregi se deseneaza mereu cu iconita de zi.
+                w.days.drop(1).take(5).map { d ->
+                    Triple(shortDayName(d.iso, locale), Wmo.iconOf(d.code, isDay = true), "${d.max}°/${d.min}°")
+                }
+            }
+
             for (i in 0 until 5) {
-                val d = next.getOrNull(i)
-                if (d == null) {
-                    // Mai putine zile decat locuri: se golesc, nu se lasa ce era inainte.
+                val c = cells.getOrNull(i)
+                if (c == null) {
+                    // Mai putine date decat locuri: se golesc, nu se lasa ce era inainte.
                     v.setTextViewText(nameIds[i], "")
                     v.setTextViewText(tempIds[i], "")
                     v.setViewVisibility(iconIds[i], View.INVISIBLE)
                     continue
                 }
                 v.setViewVisibility(iconIds[i], View.VISIBLE)
-                v.setTextViewText(nameIds[i], shortDayName(d.iso, locale))
-                v.setTextViewText(tempIds[i], "${d.max}°/${d.min}°")
-                // Zilele intregi se deseneaza mereu cu iconita de zi.
-                v.setImageViewResource(iconIds[i], Wmo.iconOf(d.code, isDay = true))
+                v.setTextViewText(nameIds[i], c.first)
+                v.setImageViewResource(iconIds[i], c.second)
+                v.setTextViewText(tempIds[i], c.third)
             }
 
             return v
         }
+
+        /**
+         * Cinci ore, din [HOUR_STEP] in [HOUR_STEP], incepand cu **prima ora plina de dupa
+         * acum** - ora curenta e deja sus, cu cifra ei mare.
+         *
+         * Se alege la desenare, nu la descarcare: widget-ul se redeseneaza si cand n-a venit
+         * nimic nou, iar la 16:10 prima coloana trebuie sa fie 17:00, nu ora la care
+         * raspunsese reteaua.
+         */
+        private fun nextHours(hours: List<Hour>, now: Long = System.currentTimeMillis()): List<Hour> =
+            hours.filter { it.epoch > now }
+                .filterIndexed { i, _ -> i % HOUR_STEP == 0 }
+                .take(5)
+
+        private fun toggleIntent(context: Context): PendingIntent =
+            PendingIntent.getBroadcast(
+                context,
+                3,
+                Intent(context, StelutaWidget::class.java).setAction(ACTION_TOGGLE),
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
+            )
 
         /**
          * Butonul ↻.

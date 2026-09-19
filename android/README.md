@@ -69,6 +69,11 @@ acum**, aduce vremea de acolo și alege **alt comentariu**. Cât lucrează, icon
 „⋯" și locul scrie „Se caută…". Prima apăsare, înainte să fi dat aplicației voie la
 locație, deschide aplicația ca s-o ceară; de-atunci butonul merge direct din widget.
 
+**„ore ⇄ / zile ⇄"**, deasupra rândului de jos, îl comută între **următoarele cinci
+zile** și **următoarele ore, din 3 în 3**, începând cu prima oră plină (la 10:17: 11:00,
+14:00, 17:00, 20:00, 23:00). Orele vin în același apel la Open-Meteo, deci comutarea e
+instantanee și merge și fără internet. Widget-ul ține minte modul ales.
+
 **Un tap în rest pe widget deschide aplicația.**
 
 Singur, widget-ul se reîmprospătează o dată la 30 de minute — minimul pe care Android îl
@@ -94,7 +99,12 @@ lui apare abia după 10 secunde, deci de obicei nici nu se vede.
 **Noaptea, „senin" nu se desenează cu un soare** — se desenează cu luna. Rândul de jos,
 care rezumă zile întregi, cere mereu varianta de zi: o zi n-are cum să fie „noapte".
 
-## Ce n-a fost verificat — 1.1.0
+## Ce n-a fost verificat — 1.2.0
+
+Nici rândul pe ore n-a fost văzut pe un telefon: mai ales dacă titlul și butonul „ore ⇄"
+încap la înălțimea la care ții widget-ul.
+
+### 1.1.0
 
 Compilează (`assembleDebug`), iar `lintDebug` trece fără erori. **Nu a fost încercat pe
 un telefon**, deci trei lucruri rămân de văzut acolo:

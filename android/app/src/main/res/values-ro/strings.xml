@@ -21,6 +21,9 @@
     <string name="feels_like">se simte ca %1$d°</string>
     <string name="updated_cached">date salvate, de la %1$s</string>
     <string name="updated_fresh">actualizat la %1$s</string>
+    <string name="next_hours">Următoarele ore</string>
+    <string name="show_hours">ore ⇄</string>
+    <string name="show_days">zile ⇄</string>
     <string name="today">Azi</string>
     <string name="notif_channel">Reîmprospătarea widget-ului</string>
     <string name="notif_refreshing">Mă uit la cer și caut unde ești…</string>

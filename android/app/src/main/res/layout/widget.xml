@@ -156,12 +156,48 @@
         android:layout_height="1dp"
         android:background="@drawable/divider" />
 
-    <!-- ============ randul de jos: cinci zile ============ -->
+    <!-- Ce arata randul de jos, si butonul care il comuta intre zile si ore. Butonul e
+         text, nu iconita: „ore ⇄" spune singur ce se intampla la apasare, pe cand un ceas
+         desenat ar trebui ghicit. -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/bottom_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/next_days"
+            android:textColor="@color/ink_3"
+            android:textSize="10sp"
+            android:textAllCaps="true"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <TextView
+            android:id="@+id/mode_toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="26dp"
+            android:gravity="center"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:background="@drawable/widget_chip_bg"
+            android:text="@string/show_hours"
+            android:textColor="@color/accent"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <!-- ============ randul de jos: cinci zile sau cinci ore ============ -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:orientation="horizontal"
         android:baselineAligned="false">
 
