@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Agenda</string>
+    <string name="widget_label">Agenda</string>
+    <string name="widget_description">Your upcoming events, on a see-through background</string>
+    <string name="untitled">(no title)</string>
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="all_day">All day</string>
+    <string name="now">Now</string>
+    <string name="until">until %s</string>
+    <string name="nothing_today">Nothing today</string>
+    <string name="no_events">Nothing in the calendar 🎉</string>
+    <string name="no_access_short">No calendar access</string>
+    <string name="need_permission">Tap to allow calendar access</string>
+    <string name="no_calendar_app">No calendar app found</string>
+    <string name="add_event">New event</string>
+    <plurals name="events_today">
+        <item quantity="one">%d event today</item>
+        <item quantity="other">%d events today</item>
+    </plurals>
+    <plurals name="days">
+        <item quantity="one">%d day</item>
+        <item quantity="other">%d days</item>
+    </plurals>
+
+    <string name="intro">A home-screen widget for Google Calendar. It reads the calendars synced on this phone — nothing leaves the phone.</string>
+    <string name="s_access">Calendar access</string>
+    <string name="access_ok">✓ Allowed</string>
+    <string name="access_missing">The widget can\'t see your events yet.</string>
+    <string name="grant">Allow access</string>
+    <string name="s_opacity">Background</string>
+    <string name="opacity_value">Opacity: %d%%  (0 = fully transparent)</string>
+    <string name="s_tone">Tone</string>
+    <string name="tone_dark">Dark</string>
+    <string name="tone_light">Light</string>
+    <string name="s_edge">Thin glass edge</string>
+    <string name="s_days">Show ahead</string>
+    <string name="s_widget">Widget</string>
+    <string name="how_to_add">Long-press the home screen → Widgets → Agenda. Drag the corners to resize. Tap an event to open it, the date to open the calendar, + for a new event.</string>
+    <string name="pin">Add to home screen</string>
+
+    <string name="preview_date">Monday, 16 November</string>
+    <string name="preview_sub">2 events today</string>
+    <string name="preview_event">SAP C_JSD · 10 – 11 PM</string>
+    <string name="preview_event2">Gym · 7 – 8 PM</string>
+</resources>

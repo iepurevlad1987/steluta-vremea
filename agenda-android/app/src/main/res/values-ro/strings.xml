@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_description">Evenimentele care urmează, pe fundal transparent</string>
+    <string name="untitled">(fără titlu)</string>
+    <string name="today">Azi</string>
+    <string name="tomorrow">Mâine</string>
+    <string name="all_day">Toată ziua</string>
+    <string name="now">Acum</string>
+    <string name="until">până %s</string>
+    <string name="nothing_today">Nimic azi</string>
+    <string name="no_events">Nimic în calendar 🎉</string>
+    <string name="no_access_short">Fără acces la calendar</string>
+    <string name="need_permission">Atinge ca să dai acces la calendar</string>
+    <string name="no_calendar_app">Nu am găsit o aplicație de calendar</string>
+    <string name="add_event">Eveniment nou</string>
+    <plurals name="events_today">
+        <item quantity="one">%d eveniment azi</item>
+        <item quantity="few">%d evenimente azi</item>
+        <item quantity="other">%d de evenimente azi</item>
+    </plurals>
+    <plurals name="days">
+        <item quantity="one">%d zi</item>
+        <item quantity="few">%d zile</item>
+        <item quantity="other">%d de zile</item>
+    </plurals>
+
+    <string name="intro">Widget de ecran pentru Google Calendar. Citește calendarele sincronizate pe telefon — nimic nu pleacă de pe telefon.</string>
+    <string name="s_access">Acces la calendar</string>
+    <string name="access_ok">✓ Permis</string>
+    <string name="access_missing">Widget-ul nu vede încă evenimentele.</string>
+    <string name="grant">Dă acces</string>
+    <string name="s_opacity">Fundal</string>
+    <string name="opacity_value">Opacitate: %d%%  (0 = complet transparent)</string>
+    <string name="s_tone">Ton</string>
+    <string name="tone_dark">Închis</string>
+    <string name="tone_light">Deschis</string>
+    <string name="s_edge">Contur fin, ca de sticlă</string>
+    <string name="s_days">Arată înainte</string>
+    <string name="s_widget">Widget</string>
+    <string name="how_to_add">Ții apăsat pe ecran → Widget-uri → Agenda. Tragi de colțuri ca să-l mărești. Atingi un eveniment ca să-l deschizi, data ca să deschizi calendarul, + pentru eveniment nou.</string>
+    <string name="pin">Pune-l pe ecran</string>
+
+    <string name="preview_date">Luni, 16 noiembrie</string>
+    <string name="preview_sub">2 evenimente azi</string>
+</resources>
